@@ -36,6 +36,11 @@
       transition: transform 0.3s ease-in-out;
     }
 
+    #familyList li {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
     
     .gallery img:hover {
       transform: scale(1.1);
@@ -103,7 +108,7 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Ssebuliba Family</a>
+    <a class="navbar-brand" href="#">Ssebuliba Family Group</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -114,8 +119,12 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#location">Location</a>
-        </li>
+            <a class="nav-link" href="#location">Location</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#documents">Documents</a>
+          </li>
         <li class="nav-item">
           <a class="nav-link" href="#family-members">Family Members</a>
         </li>
@@ -215,7 +224,7 @@
 
         </p>
           <p>
-            The Ancestral headquarter for kkobe clan is at Buwama Musaale Subcounty along Kampala-Masaka road. It is said that the fore-father of the clan, Nsereko Kalamazi mysteriously vanished in Teketwe hill - Buwama.
+            The Ancestral headquarter for kkobe clan is at Buwama Musaale Subcounty along -Masaka road. It is said that the fore-father of the clan, Nsereko Kalamazi mysteriously vanished in Teketwe hill - Buwama.
 
         </p>
           <p>
@@ -325,152 +334,244 @@
         </p> 
         
 
-        <section id="documents" class="container mt-5">
-            <h2>Documents</h2>
-            <p>Explore the rich history of the Kkobe Clan through this book: <strong>Ekika Ky'Ekkobe</strong>.</p>
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="Ekika Ky'ekkobe.PDF.pdf" allowfullscreen></iframe>
-            </div>
-        </section>
+
 
       </div>
       <a href="javascript:void(0)" id="readMoreBtn" onclick="toggleReadMore()"><strong> Read more...</strong></a>
     </div>
   </section>
 
+  <section id="documents" class="container mt-5">
+    <h2>Documents</h2>
+    <p>Explore the rich history of the Kkobe Clan through this book: <strong>Ekika Ky'Ekkobe</strong>.</p>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="Ekika Ky'ekkobe.PDF.pdf" allowfullscreen></iframe>
+    </div>
+</section>
 
-<!-- Family Members Section -->
-<section id="family-members" class="container mt-5">
-    <h2>Family Members</h2>
-    <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. Here are some of the descendants:</p>
-    <ul id="familyList">
-      <li data-name="Mutumba Jesse Paul" data-age="" data-contact="" data-location="" data-parents="">Mutumba Jesse Paul</li>
-      <li data-name="Nsereko Moses" data-age="" data-contact="" data-location="" data-parents="">Nsereko Moses</li>
-      <li data-name="Kawuma Derrick" data-age="" data-contact="" data-location="" data-parents="">Kawuma Derrick</li>
-      <li data-name="Nakayiwa Jane" data-age="" data-contact="" data-location="" data-parents="">Nakayiwa Jane</li>
-      <li data-name="Ssebuliba Enock" data-age="" data-contact="" data-location="" data-parents="">Ssebuliba Enock</li>
-      <!-- Add more family members with similar data attributes -->
-    </ul>
-  </section>
-  
-  <!-- Family Member Modal -->
-  <div class="modal fade" id="familyMemberModal" tabindex="-1" role="dialog" aria-labelledby="familyMemberModalLabel" aria-hidden="true">
+<!-- Add a modal container to the body -->
+<div class="modal" id="memberModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="familyMemberModalLabel">Family Member Details</h5>
+          <h5 class="modal-title" id="memberModalTitle">Member Details</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <img id="modalThumbnail" src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Family Member Thumbnail" class="img-thumbnail">
-          <p><strong>Name:</strong> <span id="modalName"></span></p>
-          <p><strong>Age:</strong> <span id="modalAge"></span></p>
-          <p><strong>Contact:</strong> <span id="modalContact"></span></p>
-          <p><strong>Location:</strong> <span id="modalLocation"></span></p>
-          <p><strong>Parents:</strong> <span id="modalParents"></span></p>
+          <img id="memberImage" class="img-thumbnail" alt="Member Image">
+          <p><strong>Name:</strong> <span id="memberName"></span></p>
+          <p><strong>Age:</strong> <span id="memberAge"></span></p>
+          <p><strong>Contact:</strong> <span id="memberContact"></span></p>
+          <p><strong>Location:</strong> <span id="memberLocation"></span></p>
+          <p><strong>Father's Name:</strong> <span id="memberParents"></span></p>
         </div>
       </div>
     </div>
   </div>
-    
-  <script>
-  $(document).ready(function() {
-      // Handle family member click events
-      $('#familyList li').on('click', function() {
-          // Get data attributes
-          var name = $(this).data('name');
-          var age = $(this).data('age');
-          var contact = $(this).data('contact');
-          var location = $(this).data('location');
-          var parents = $(this).data('parents');
   
-          // Update modal content
-          $('#modalName').text(name);
-          $('#modalAge').text(age);
-          $('#modalContact').text(contact);
-          $('#modalLocation').text(location);
-          $('#modalParents').text(parents);
-  
-          // Display modal
-          $('#familyMemberModal').modal('show');
-      });
-  });
-  </script>
-  
+<!-- Family Members Section -->
+<section id="family-members" class="container mt-5">
+    <h2>Family Members</h2>
+    <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. Here are some of the descendants:</p>
+    <ol id="familyList">
+      <!-- Add data-member attributes for each family member -->
+      <li data-member="Mutumba Jesse Paul"data-age="27" data-contact="0750687790" data-location="Namungoona" data-parents="Kyewalabye Robert" data-image="Mutumba Jesse Paul.jpg">Mutumba Jesse Paul</li>
+      <li data-member="Nsereko Moses "data-age="62" data-contact="0771935360" data-location="Kkumbu" data-parents="Lt. Rev. Enock Ssebuliba" data-image="Nsereko Moses.jpg">Nsereko Moses</li>
+      <li data-member="Kawuma Derrick "data-age="25" data-contact="+49 1575 4442199" data-location="Germany" data-parents="Kyewalabye Robert" data-image="Kawuma Derrick.jpg">Kawuma Derrick</li>
+      <li data-member="Nakayiwa Jane "data-age="28" data-contact="0779757278" data-location="Luweero" data-parents="" data-image="Nakayiwa Jane.jpg">Nakayiwa Jane </li>
+      <li data-member="Ssebuliba Enock "data-age="32" data-contact="0704053669" data-location="Kimwanyi" data-parents="" data-image="Ssebuliba Enock.jpg">Ssebuliba Enock</li>
+      <li data-member="Nakakaawa Jane "data-age="35" data-contact="0756360582" data-location="" data-parents="" data-image="Nakakaawa Jane.jpg">Nakakaawa Jane</li>
+      <li data-member="Nantumbwe Winnie "data-age="32" data-contact="0708102904" data-location="" data-parents="" data-image="no-image-available.png">Nantumbwe Winnie</li>
+      <li data-member="Nsereko Eriab "data-age="25" data-contact="0754275289" data-location="" data-parents="" data-image="Nsereko Eriab.jpg">Nsereko Eriab</li>
+      <li data-member="Kayongo Samuel "data-age="30" data-contact="0787943831" data-location="Kamuli" data-parents="Kyewalabye Robert" data-image="Kayongo Samuel.jpg">Kayongo Samuel</li>
+      <li data-member="Mulungi Liam "data-age="4" data-contact="" data-location="Kamuli" data-parents="Kayongo Samuel" data-image="Mulungi Liam.jpg">Mulungi Liam</li>
+      <li data-member="Ssekamatte Raymond "data-age="28" data-contact="0751462286" data-location="Ow'Obulenzi" data-parents="Kyewalabye Robert" data-image="no-image-available.png">Ssekamatte Raymond</li>
+      <li data-member="Ssuubi Miriam "data-age="24" data-contact="0788477416" data-location="" data-parents="Kyewalabye Robert" data-image="Ssuubi Miriam.jpg">Ssuubi Miriam</li>
+      <li data-member="Kyewalabye Collines "data-age="23" data-contact="0742892513" data-location="Kiyimbwe" data-parents="Kyewalabye Robert" data-image="Kyewalabye Collines.jpg">Kyewalabye Collines</li>
+      <li data-member="Ssebuliba Hannington "data-age="22" data-contact="0776195368" data-location="" data-parents="" data-image="Hannington Ssebuliba.jpg">Ssebuliba Hannington</li>
+      <li data-member="Ezra Enock Mugabi Ssebuliba "data-age="8" data-contact="0772416313" data-location="" data-parents="" data-image="Ezra Enock Mugabi Ssebuliba.jpg">Ezra Enock Mugabi Ssebuliba</li>
+      <li data-member="Christine Rhona Nantumbwe Kwagalakwe "data-age="21" data-contact="" data-location="" data-parents="" data-image="Christine Rhoda Nantumbwe Kwagalakwe.jpg">Christine Rhona Nantumbwe Kwagalakwe</li>
+      <li data-member="Joel Silas Busuulwa "data-age="9" data-contact="" data-location="" data-parents="" data-image="Joel Silas Busuulwa.jpg">Joel Silas Busuulwa </li>
+      <li data-member="Cathryn Nsereko "data-age="18" data-contact="0706442225" data-location="Kkumbu" data-parents="" data-image="Cathryn Nsereko.jpg">Cathryn Nsereko</li>
+      <li data-member="Hannington Lule "data-age="25" data-contact="+49 1521 6438675" data-location="" data-parents="" data-image="Brian Hannington Lule.jpg">Hannington Lule</li>
+      <li data-member="Arnold Paul Enock Ssebuliba "data-age="26" data-contact="0779576943" data-location="" data-parents="" data-image="Arnold Paul Enock Ssebuliba.jpg">Arnold Paul Enock Ssebuliba</li>
+      <li data-member="Christine Liz Nalule  "data-age="27" data-contact="0780253707" data-location="France" data-parents="" data-image="Christine Liz Nalule.jpg">Christine Liz Nalule </li>
+      <li data-member="Enock Mugabi Ssebuliba "data-age="43" data-contact="" data-location="" data-parents="" data-image="Enock Mugabi Ssebuliba.jpg">Enock Mugabi Ssebuliba</li>
+      <li data-member="Gladys Grace Nambalirwa Tendo "data-age="19" data-contact="" data-location="" data-parents="" data-image="Gladys Grace Nambalirwa Tendo.jpg">Gladys Grace Nambalirwa Tendo</li>
+      <li data-member="Nambalirwa Vivian Faith Kwagalakwe "data-age="17" data-contact="0704650106" data-location="" data-parents="" data-image="Nambalirwa Vivian Faith Kwagalakwe.jpg">Nambalirwa Vivian Faith Kwagalakwe</li>
+      <li data-member="David Ssebuliba "data-age="23" data-contact="0753310289" data-location="" data-parents="" data-image="David Ssebuliba.jpg">David Ssebuliba </li>
+      <li data-member="Nakakaawa Jane "data-age="33" data-contact="0756360582" data-location="" data-parents="" data-image="Nakakaawa Jane.jpg">Nakakaawa Jane</li>
+      <li data-member="Nakakaawa Primah "data-age="9" data-contact="" data-location="" data-parents="" data-image="Primah & Mariam.jpg">Nakakaawa Primah</li>
+      <li data-member="Nakakaawa Mariam "data-age="8" data-contact="" data-location="" data-parents="" data-image="Primah & Mariam.jpg">Nakakaawa Mariam </li>
+      <li data-member="Nantumbwe Winnie "data-age="29" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Nantumbwe Winnie</li>
+      <li data-member="Nantumbwe Nilsar "data-age="11" data-contact="" data-location="" data-parents="" data-image="Nilsar.jpg">Nantumbwe Nilsar</li>
+      <li data-member="Namale Agnes "data-age="36" data-contact="0775155959" data-location="" data-parents="" data-image="no-image-available.png">Namale Agnes </li>
+      <li data-member="Ssebuliba David "data-age="26" data-contact="" data-location="" data-parents="" data-image="Ssebuliba David.jpg">Ssebuliba David</li>
+      <li data-member="Mutumba Gideon Divine "data-age="12" data-contact="" data-location="" data-parents="" data-image="no no-image-available.png">Mutumba Gideon Divine </li>
+      <li data-member="Busuulwa Emmie Ssebuliba "data-age="97" data-contact="0772408417" data-location="" data-parents="Lt. Rev. Enock Ssebuliba" data-image="no-image-available.png">Busuulwa Emmie Ssebuliba</li>
+      <li data-member="Carol Grace Nantege Kwagalakwe "data-age="14" data-contact="0782704361" data-location="" data-parents="" data-image="Carol Grace Nantege Kwagalakwe.jpg">Carol Grace Nantege Kwagalakwe</li>
+      <li data-member="Nantege Gloria "data-age="26" data-contact="0" data-location="0705040009" data-parents="" data-image="no-image-available.png">Nantege Gloria </li>
+      <li data-member="Mutumba Joel "data-age="0" data-contact="" data-location="" data-parents="" data-image="Joel Silas Busuulwa.jpg">Mutumba Joel</li>
+      <li data-member="Nantumbwe Eve Laurine "data-age="11" data-contact="" data-location="" data-parents="" data-image="Eve Laurine.jpg">Nantumbwe Eve Laurine</li>
+      <li data-member="Namale Linda "data-age="7" data-contact="" data-location="" data-parents="" data-image="Linda.jpg">Namale Linda</li>
+      <li data-member="Henry Mugera Mayanja "data-age="38" data-contact="0772545958" data-location="" data-parents="" data-image="Henry Mugerwa Mayanja.jpg">Henry Mugera Mayanja</li>
+      <li data-member="Racheal Ttendo Nantege "data-age="29" data-contact="0706136199" data-location="" data-parents="" data-image="Racheal Ttendo Nantege.jpg">Racheal Ttendo Nantege</li>
+      <li data-member="Mutambuze Saul "data-age="63" data-contact="0779516827" data-location="Kikungwe" data-parents="Lt. Rev. Enock Ssebuliba" data-image="Mutambuze Saul.jpg">Mutambuze Saul</li>
+      <li data-member="Ssenga Sarah "data-age="72" data-contact="0784162946" data-location="Kikungwe" data-parents="Lt. Rev. Enock Ssebuliba" data-image="no-image-available.png">Ssenga Sarah</li>
+      <li data-member="Taata Sseka "data-age="82" data-contact="0772687163" data-location="Kikungwe" data-parents="Lt. Rev. Enock Ssebuliba" data-image="no-image-available.png">Ttaata Sseka</li>
+      <li data-member="Winnie Angella "data-age="10" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Winnie Angella</li>
+      <li data-member="Sheilah "data-age="12" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Sheilah</li>
+      <li data-member="Declyne "data-age="8" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Declyne</li>
+      <li data-member="Kyle "data-age="7" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Kyle</li>
+      <li data-member="Lianah "data-age="3" data-contact="" data-location="Kamuli" data-parents="Kayongo Samuel" data-image="Liana.jpg">Lianah</li>
+      <li data-member="Esau "data-age="26" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Esau</li>
+      <li data-member="Tivia "data-age="14" data-contact="" data-location="Kamuli" data-parents="" data-image="no-image-available.png">Tivia</li>
+      <li data-member="Eric "data-age="19" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Eric</li>
+    </ol>
+  </section>
 
+  
 
 <!-- Photo Gallery Section -->
 <section id="photo-gallery" class="container mt-5">
   <h2>Photo Gallery</h2>
   
   <div class="gallery">
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
+    <a data-fancybox="gallery" data-caption="Arnold Paul Enock Ssebuliba" href="Arnold Paul Enock Ssebuliba.jpg">
+      <img src="Arnold Paul Enock Ssebuliba.jpg" alt="Image 1">
     </a>
     
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    
-    <!-- Add more images with similar structure -->
+        <a data-fancybox="gallery" data-caption="" href="">
+          <img src="Brian Hannington Lule.jpg" alt="Image 1">
+        </a>
+        
+            <a data-fancybox="gallery" data-caption="" href="">
+              <img src="Carol Grace Nantege Kwagalakwe.jpg" alt="Image 1">
+            </a>
+            
+                <a data-fancybox="gallery" data-caption="" href="">
+                  <img src="Cathryn Nsereko.jpg" alt="Image 1">
+                </a>
+                
+                    <a data-fancybox="gallery" data-caption="" href="">
+                      <img src="Christine Liz Nalule.jpg" alt="Image 1">
+                    </a>
+                    
+                        <a data-fancybox="gallery" data-caption="" href="">
+                          <img src="Christine Rhoda Nantumbwe Kwagalakwe.jpg" alt="Image 1">
+                        </a>
+                        
+                            <a data-fancybox="gallery" data-caption="" href="">
+                              <img src="David Ssebuliba.jpg" alt="Image 1">
+                            </a>
+                            
+                                <a data-fancybox="gallery" data-caption="" href="">
+                                  <img src="Enock Mugabi Ssebuliba.jpg" alt="Image 1">
+                                </a>
+                                
+                                    <a data-fancybox="gallery" data-caption="" href="">
+                                      <img src="Eve Laurine.jpg" alt="Image 1">
+                                    </a>
+                                    
+                                        <a data-fancybox="gallery" data-caption="" href="">
+                                          <img src="Ezra Enock Mugabi Ssebuliba.jpg" alt="Image 1">
+                                        </a>
+                                        
+                                            <a data-fancybox="gallery" data-caption="" href="">
+                                              <img src="Gladys Grace Nambalirwa Tendo.jpg" alt="Image 1">
+                                            </a>
+                                            
+                                                <a data-fancybox="gallery" data-caption="" href="">
+                                                  <img src="Hannington Ssebuliba.jpg" alt="Image 1">
+                                                </a>
+                                                
+                                                    <a data-fancybox="gallery" data-caption="" href="">
+                                                      <img src="Henry Mugerwa Mayanja.jpg" alt="Image 1">
+                                                    </a>
+                                                    
+                                                        <a data-fancybox="gallery" data-caption="" href="">
+                                                          <img src="Joel Silas Busuulwa.jpg" alt="Image 1">
+                                                        </a>
+                                                        
+                                                            <a data-fancybox="gallery" data-caption="" href="">
+                                                              <img src="Kawuma Derrick.jpg" alt="Image 1">
+                                                            </a>
+                                                            
+                                                                <a data-fancybox="gallery" data-caption="" href="">
+                                                                  <img src="Kayongo Samuel.jpg" alt="Image 1">
+                                                                </a>
+                                                                
+                                                                    <a data-fancybox="gallery" data-caption="" href="">
+                                                                      <img src="Kyewalabye Collines.jpg" alt="Image 1">
+                                                                    </a>
+                                                                    
+                                                                        <a data-fancybox="gallery" data-caption="" href="">
+                                                                          <img src="Liana.jpg" alt="Image 1">
+                                                                        </a>
+                                                                        
+                                                                            <a data-fancybox="gallery" data-caption="" href="">
+                                                                              <img src="Linda.jpg" alt="Image 1">
+                                                                            </a>
+                                                                            
+                                                                                <a data-fancybox="gallery" data-caption="" href="">
+                                                                                  <img src="Mulungi Liam.jpg" alt="Image 1">
+                                                                                </a>
+                                                                                
+                                                                                    <a data-fancybox="gallery" data-caption="" href="">
+                                                                                      <img src="Mutambuze Saul.jpg" alt="Image 1">
+                                                                                    </a>
+                                                                                    
+                                                                                        <a data-fancybox="gallery" data-caption="" href="">
+                                                                                          <img src="Mutumba Jesse Paul.jpg" alt="Image 1">
+                                                                                        </a>
+                                                                                        
+                                                                                            <a data-fancybox="gallery" data-caption="" href="">
+                                                                                              <img src="Nakakaawa Jane.jpg" alt="Image 1">
+                                                                                            </a>
+                                                                                            
+                                                                                                <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                  <img src="Nakayiwa Jane.jpg" alt="Image 1">
+                                                                                                </a>
+                                                                                                
+                                                                                                    <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                      <img src="Nambalirwa Vivian Faith Kwagalakwe.jpg" alt="Image 1">
+                                                                                                    </a>
+                                                                                                    
+                                                                                                        <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                          <img src="Nilsar.jpg" alt="Image 1">
+                                                                                                        </a>
+                                                                                                        
+                                                                                                            <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                              <img src="Nsereko Eriab.jpg" alt="Image 1">
+                                                                                                            </a>
+                                                                                                            
+                                                                                                                <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                                  <img src="Nsereko Moses.jpg" alt="Image 1">
+                                                                                                                </a>
+                                                                                                                
+                                                                                                                    <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                                      <img src="Primah & Mariam.jpg" alt="Image 1">
+                                                                                                                    </a>
+                                                                                                                    
+                                                                                                                        <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                                          <img src="Racheal Ttendo Nantege.jpg" alt="Image 1">
+                                                                                                                        </a>
+                                                                                                                        
+                                                                                                                            <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                                              <img src="Ssebuliba David.jpg" alt="Image 1">
+                                                                                                                            </a>
+                                                                                                                            
+                                                                                                                                <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                                                  <img src="Ssebuliba Enock.jpg" alt="Image 1">
+                                                                                                                                </a>
+                                                                                                                                
+                                                                                                                                    <a data-fancybox="gallery" data-caption="" href="">
+                                                                                                                                      <img src="Ssuubi Miriam.jpg" alt="Image 1">
+                                                                                                                                    </a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+   
   </div>
 </section>
 
@@ -490,7 +591,7 @@
 
 <!-- Footer Section -->
 <footer>
-  <p>&copy; Ssebuliba Family | <span id="currentYear"></span> | All Rights Reserved</p>
+  <p>&copy; Ssebuliba Family Group <span id="currentYear"></span> <br> All Rights Reserved</p>
 </footer>
 
   <!-- Bootstrap JS and dependencies -->
@@ -544,7 +645,7 @@ document.getElementById('currentYear').innerText = new Date().getFullYear();
           "kiwabudde", "lwantanya", "mbatudde", "mbawadde", "nababi", "nabanoba", "nabikaajumbe", "nabitengero", "nabwami",
           "nabweggamo", "najjolo", "nakakaawa", "nakalembe", "nakamatte", "nakasinde", "nakatudde", "nakawuma", "nakayiwa",
           "nakibuule", "nalule", "nalwanga", "namale", "nambalirwa", "nambi", "namboga", "nambooze", "namboyera", "nammembe",
-          "nango", "nansereko", "nantege", "nantumbwe", "nassimbwa", "ndyona", "nnaamala", "ntabadde"     
+          "nango", "nansereko", "nantege", "nantumbwe", "nassimbwa", "ndyona", "nnaamala", "ntabadde", "mutambuze"     
         ];
 
         // Check if the entered username is in the allowed list
@@ -584,6 +685,40 @@ function speak(text) {
     synth.speak(utterance);
 }
 
+  // Function to show member details modal
+  function showMemberModal(member) {
+    // Replace this with the actual data for each family member
+    var memberData = {
+      name: member.getAttribute('data-member'),
+      age: member.getAttribute('data-age') || "Age not specified",
+      contact: member.getAttribute('data-contact') || "Contact not specified",
+      location: member.getAttribute('data-location') || "Location not specified",
+      parents: member.getAttribute('data-parents') || "Parents not specified",
+      image: member.getAttribute('data-image') || "default.jpg" // Replace with the default image path
+    };
+
+    // Populate modal with member data
+    document.getElementById('memberModalTitle').innerText = "Family Member Details";
+    document.getElementById('memberName').innerText = memberData.name;
+    document.getElementById('memberAge').innerText =  memberData.age;
+    document.getElementById('memberContact').innerText =  memberData.contact;
+    document.getElementById('memberLocation').innerText = memberData.location;
+    document.getElementById('memberParents').innerText =  memberData.parents;
+    document.getElementById('memberImage').src = memberData.image;
+
+    // Show the modal
+    $('#memberModal').modal('show');
+  }
+
+  // Add click event listeners to each family member
+  var familyList = document.getElementById('familyList');
+  var familyMembers = familyList.getElementsByTagName('li');
+
+  for (var i = 0; i < familyMembers.length; i++) {
+    familyMembers[i].addEventListener('click', function () {
+      showMemberModal(this);
+    });
+  }
   </script>
 </body>
 </html>
