@@ -135,7 +135,6 @@
   <div class="jumbotron" style="background-image: url('jumbotron.jpg');">
     <div class="container">
       <h1 class="display-4" id="welcomeMessage">Welcome</h1>
-      <p class="lead">Preserving the bond of our family through generations.</p>
     </div>
   </div>
 
@@ -145,7 +144,7 @@
     <div id="historyContent">
       <!-- Add your long content here -->
       <p>
-        The legend to explain how Kkobe clansmen came to have Kkobe as their totem. Kkobe (is a creeping plant) grown as a food crop. Its fruit is harvested and prepared wholesomely by steaming in banana leaves. It is a delicacy for other Baganda but not the members of the Kkobe clan (Abekkobe), for them it is a taboo to eat it.
+ A kkobe is a creeping plant grown as a food crop. Its fruit is harvested and prepared wholesomely by steaming in banana leaves. It is a delicacy for other Baganda but not the members of the Kkobe clan (Ab'ekkobe), for them it is a taboo to eat it.
       </p>
       <div class="read-more-content">
         <p>
@@ -513,11 +512,11 @@ document.getElementById('currentYear').innerText = new Date().getFullYear();
     }
 
     $(document).ready(function() {
-      // Show the modal on page load
-      $('#usernameModal').modal('show');
+    // Show the modal on page load
+    $('#usernameModal').modal('show');
 
-      // Handle form submission
-      $('#usernameForm').submit(function(e) {
+    // Handle form submission
+    $('#usernameForm').submit(function(e) {
         e.preventDefault();
         // Get the entered username
         var username = $('#username').val().toLowerCase(); // Convert to lowercase
@@ -540,20 +539,35 @@ document.getElementById('currentYear').innerText = new Date().getFullYear();
           "kiwabudde", "lwantanya", "mbatudde", "mbawadde", "nababi", "nabanoba", "nabikaajumbe", "nabitengero", "nabwami",
           "nabweggamo", "najjolo", "nakakaawa", "nakalembe", "nakamatte", "nakasinde", "nakatudde", "nakawuma", "nakayiwa",
           "nakibuule", "nalule", "nalwanga", "namale", "nambalirwa", "nambi", "namboga", "nambooze", "namboyera", "nammembe",
-          "nango", "nansereko", "nantege", "nantumbwe", "nassimbwa", "ndyona", "nnaamala", "ntabadde"        ];
+          "nango", "nansereko", "nantege", "nantumbwe", "nassimbwa", "ndyona", "nnaamala", "ntabadde"     
+        ];
 
         // Check if the entered username is in the allowed list
         if (allowedNames.includes(username)) {
-          // Update the welcome message on the page
-          $('#welcomeMessage').text('Hi ' + username.charAt(0).toUpperCase() + username.slice(1) + ', welcome to the Ssebuliba Family Group.');
-          // Close the modal
-          $('#usernameModal').modal('hide');
+            // Get the current time
+            var currentTime = new Date().getHours();
+
+            // Determine the greeting based on the time of the day
+            var greeting = "";
+            if (currentTime >= 5 && currentTime < 12) {
+                greeting = "Good Morning";
+            } else if (currentTime >= 12 && currentTime < 18) {
+                greeting = "Good Afternoon";
+            } else {
+                greeting = "Good Evening";
+            }
+
+            // Update the welcome message on the page
+            $('#welcomeMessage').text(greeting + ' ' + username.charAt(0).toUpperCase() + username.slice(1) + '');
+            // Close the modal
+            $('#usernameModal').modal('hide');
         } else {
-          // Display an error message or take appropriate action
-          alert('Access denied! The name you used does not belong to the Kkobe Clan. Please try again...');
+            // Display an error message or take appropriate action
+            alert('Access denied! The name you used does not belong to the Kkobe Clan. Please try again...');
         }
-      });
     });
+});
+
   </script>
 </body>
 </html>
