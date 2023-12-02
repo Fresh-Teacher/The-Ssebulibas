@@ -1,557 +1,930 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Ssebuliba Family Group</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebration Agenda and Summary</title>
+    <!-- Bootstrap CSS -->
+    <!-- Include baguetteBox.js library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.0/baguetteBox.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.0/baguetteBox.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-<!-- Add these links to your HTML head section -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <style>
-#photo-gallery {
-      text-align: center;
-    }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
-      justify-content: center;
-      margin-top: 20px;
-    }
 
-    .gallery a {
-      display: block;
-    }
+        .jumbotron {
+            background-color: #007bff;
+            color: #fff;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0.3rem;
+        }
 
-    .gallery img {
-      width: 100%; /* Set a fixed width */
-      height: 200px; /* Set a fixed height */
-      object-fit: cover; /* Maintain aspect ratio and cover the container */
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease-in-out;
-    }
 
-    
-    .gallery img:hover {
-      transform: scale(1.1);
-    }
-    body {
-      padding-top: 56px; /* Adjusted for the fixed navbar */
-    }
-    .jumbotron {
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      min-height: 100vh; /* Minimum height of 100% of the viewport height */
-      margin-bottom: 0; /* Remove default bottom margin */
-    }
-    .jumbotron h1 {
-      font-size: 2.5rem; /* Adjust font size as needed */
-    }
-    .jumbotron p {
-      font-size: 1.5rem; /* Adjust font size as needed */
-    }
-    @media (max-width: 576px) {
-      .jumbotron {
-        min-height: 50vh; /* Adjust for smaller screens */
-      }
-    }
-    .read-more-content {
-      display: none;
-    }
+        .container {
+            margin-top: 20px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #f2f2f2;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+        h2 {
+            color: #007bff;
+        }
+
+        .event {
+            margin-bottom: 20px;
+        }
+
+        .class-details {
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .class-details h3 {
+            color: #007bff;
+        }
+
+        audio {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .song-link {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: underline;
+            margin-right: 10px;
+        }
+
+#header .countdown {
+  margin-bottom: 80px;
+}
+
+#header .countdown div {
+  text-align: center;
+  margin: 10px;
+  width: 100px;
+  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.12);
+  border-top: 5px solid #ff0000;
+}
+
+#header .countdown div h3 {
+  font-weight: 700;
+  font-size: 44px;
+  margin-bottom: 15px;
+}
+
+#header .countdown div h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 575px) {
+  #header .countdown div {
+    width: 70px;
+    padding: 10px 0;
+    margin: 10px 8px;
+  }
+
+  #header .countdown div h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  #header .countdown div h4 {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+
+        #countdown-section {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #countdown {
+            font-size: 24px;
+            color: rgb(251, 0, 0);
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Bootstrap Modal -->
-  <div class="modal" id="usernameModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <!-- Semi-transparent overlay -->
-        <div class="modal-overlay"></div>
-        
-        <div class="modal-header">
-          <h5 class="modal-title">Enter Your Username</h5>
-        </div>
-        <div class="modal-body">
-          <form id="usernameForm">
-            <div class="form-group">
-              <label for="username">Username:</label>
-              <input type="text" class="form-control" id="username" required>
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex flex-column align-items-center">
+    
+          <h1></h1>
+          <h2>NEXT EVENT STARTS IN:</h2>
+          <div class="countdown d-flex justify-content-center" data-count="2024/11/27">
+            <div>
+              <h3>%d</h3>
+              <h4>Days</h4>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Ssebuliba Family</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#history">History</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#achievements">Achievements</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#location">Location</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#family-members">Family Members</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#photo-gallery">Photo Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#importance">Importance</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Jumbotron -->
-  <div class="jumbotron" style="background-image: url('jumbotron.jpg');">
-    <div class="container">
-      <h1 class="display-4" id="welcomeMessage">Welcome</h1>
-      <p class="lead">Preserving the bond of our family through generations.</p>
-    </div>
-  </div>
-
-  <!-- History Section -->
-  <section id="history" class="container mt-5">
-    <h2>History of Our Clan</h2>
-    <div id="historyContent">
-      <!-- Add your long content here -->
-      <p>
-        The legend to explain how Kkobe clansmen came to have Kkobe as their totem. Kkobe (is a creeping plant) grown as a food crop. Its fruit is harvested and prepared wholesomely by steaming in banana leaves. It is a delicacy for other Baganda but not the members of the Kkobe clan (Abekkobe), for them it is a taboo to eat it.
-      </p>
-      <div class="read-more-content">
-        <p>
-            The great grand father and founder of Kkobe clan, Nsereko Kalamazi, was one time under the command of King Kintu (1200-1230). They came from exile in Eastern Uganda to attack and overthrow the notorious Bemba Musota then King of Buganda.
-
-        </p>
-          <p>
-            On their way, Nsereko met a girl and fell in love with her and later proposed to her. One day Nsereko in an entourage of friends went to be introduced to his future in-laws. They were warmly welcomed , seated down on animal skins and served to a banquet. In the middle of the delicious meal, a kkobe fruit fell and hit Nsereko's bald head. Oh! This was a terrible embarrassment to Nsereko in front of the in-laws! From that day he cursed the kkobe and he swore and directed that his children and grand children never to eat kkobe. Hence kkobe became their totem to this day.
-
-        </p>
-          <p>
-            On their way, Nsereko met a girl and fell in love with her and later proposed to her. One day Nsereko in an entourage of friends went to be introduced to his future in-laws. They were warmly welcomed , seated down on animal skins and served to a banquet. In the middle of the delicious meal, a kkobe fruit fell and hit Nsereko's bald head. Oh! This was a terrible embarrassment to Nsereko in front of the in-laws! From that day he cursed the kkobe and he swore and directed that his children and grand children never to eat kkobe. Hence kkobe became their totem to this day.
-
-        </p>
-          <p>
-            Nsereko Kalamazi further joined hands with King Kintu and later on they overthrew Bemba Musota that is known in history of Buganda to have been a dictator, killer, oppressor and very corrupt.
-
-        </p>
-        <p>
-            After the victory, Nsereko settled in Kanyanya near Magonga, Busujju county. Later on, he requested the king to be offered Buzimwa area in Mawokota where his brothers had settled earlier. Nsereko's brothers were: Gubiri, Kakulukuku and Nalugunju. They were under the rule of a Munyoro called Kasamu, the four brothers joined hands and chased Kasamu away. They did the same to other Banyoro chiefs around Teketwe, present day Buwama, the ancestral headquarters of the Kkobe clan.
-
-        </p>
-          <p>
-            Nsereko was known for his tactical ways and wisdom he displayed in the way he used to answer the king's questions. Nsereko was always the first to answer. Because of the quick and wise answers Nsereko would give they called him 'Namuyama' which later changed to 'Namwama'. In Lusese language, 'kwama' means to be the first or to welcome.
-
-        </p>
-          <p>
-            Nsereko was later assigned the duty of regularly fetching god Mukasa (god of the sea and fertility) from Ssese, whenever there was need for the god's intervention. The King always asked Nsereko: "Omugenyi wamuyama" (did you welcome the guest?) (Mukasa), Nsereko would respond; "Omugenyi namuyama" (Yes, your majesty, I welcomed the visitor). From 'Namuyama' - Namwama, the name given to the Clan's ancestral headquarter (Embuga) evolved, that is 'Buwama', in Mawokota county.
-
-        </p>
-          <p>
-            <strong>Nsereko's Immediate Descendants</strong><br>
-            The Kkobe clan forefather Nsereko, had more than ten children, however, the following became very famous:
-            
-                      </p>
-          <p>
-            1. Namukangula, a great hunter during the reign of King Kintu; He would go for the king's meat from the hunting ground. He settled in Buzimwa, did not bear children and on his death he was succeed by his brother Nankule.
-        </p>
-          <p>
-            2. Lwabiriza was King Kintu's chief, he settled in Magonga, Busujju county. The king honoured him with land in Katoolingo Busiro county and later assigned him duties of:
-
-        </p>
-          <p>
-            a) Digging graves for dead princes
-        </p>
-          <p>
-            b) Removing jaw - bones from dead kings for preservation and honour.
-            Lwabiriza had children but the most prominent was Junior Lwabiriza who accompanied prince Kalemeera to Bunyoro.
-
-        </p>
-          <p>
-            3. Mabingo Magere was in charge of fixing the king's spear, which he used in piercing a kob whose skin was used to make a special dress called enkanamo for the king. Mabingo settled in Magonga.
-        </p>
-        <p>
-            4. Kiraga and his sister Nambwami were customary placed by Nsereko as symbols of his parentage. When he had twins, Nsereko performed a ritual called: "Okumenya olukanda as Nabwami and Kiraga stood in for Nsereko's father and mother since both parents were dead.
-        </p>
-          <p>
-            5. Kyana of Tiribogo, Mawokota county, leads the royal lineage (Olunyiriri olulangira) in the Kkobe clan (see page…).
-        </p>
-          <p>
-            6. Walubandwa - Kabengwa, was also a great hunter, lived in Buzimwa with other Kkobe clan members and died there.
-        </p>
-          <p>
-            7. Nakanyakaali father to Kakinda of Jjalamba and Mukooge of Ggolo Mawokota county.
-
-        </p>
-          <p>
-            Nsereko had other sons like; Kayiwa, Busuulwa among many others.
-
-        </p>
-          <p>
-            The burial grounds for the Namwamas and their grand children are at Buzimwa, Ssabagabo - Mudduuma subcounty 22 miles along Mityana road.
-
-        </p>
-          <p>
-            The Ancestral headquarter for kkobe clan is at Buwama Musaale Subcounty along Kampala-Masaka road. It is said that the fore-father of the clan, Nsereko Kalamazi mysteriously vanished in Teketwe hill - Buwama.
-
-        </p>
-          <p>
-            Nsereko had a spear known as "Mazina gandigita" he used in many expansion and conquest wars against the Banyoro. He captured Teketwe, Kayenye, Misindye and Kyabadaaza from them.
-
-        </p>
-          <p>
-            Nsereko's last battle against the Banyoro extended as far as Kayenje and Misimdye in Mawokota. During this war he sounded his war drum Tagobwa (the unchallengeable) commanded one of the platoons and usually on the front line. His son Kabengwa who loved his dog like life itself commanded another platoon. He changed the sounding of his father's drum to; "Embwa ekooye gireete erye eggumba. Ye omukazi leka eyo" meaning, "My dog is worn out and hungry serve it with food, don't mind the woman." That lyric later formed part of the Kkobe clan anthem (Omubala).
-
-        </p>
-        <p>
-            After Nsereko Kalamazi had defeated all the Banyoro around Teketwe (Buwama) he asked Kabaka Kintu for a permission to settle there so as to continue with the responsibility of always fetching Mukasa from Ssese. It was for this reason that Nsereko acquired two territories including Buzimwa.
-
-        </p>
-          <p>
-            <strong>SOME PROMINENT KKOBE CLANSMEN OF HISTORICAL TIMES</strong><br>
-            These were great men and women in the Kingdom of Buganda because of the contributions they made to the growth of the kingdom. These people are still remembered to date, and they include:          </p>
-          <p>
-            1. Nsereko Kalamazi, the fore father and founder of the Kkobe clan was a fierce warrior who joined hands with Kabaka Kintu and together they defeated the notorious Bbemba Musota. Nsereko defeated the Banyoro from Mawokota and Butambala counties.
-        </p>
-          <p>
-            2. Kyewaalabye of Kaabyuma was county chief of Buweekula. From him, the name/title Luweekula was derived because whenever Banyoro women heard the mention of Kyewaalabye's name, they would flee carrying their young ones on their backs. It would only be at a distance that they got the children from the backs "okuweekula" and feed them.
-
-        </p>
-          <p>
-            From "okuweekula" the nickname Luweekula for Kyewalabye originated. Kyewalabye defeated the Banyoro in Buweekula county during the reign of Kabaka Kamaanya. He assumed the title Luweekula after many conquests, and became a county chief of Buweekula. Before this he was a sub-county chief of Ssabawaali Ssingo.
-
-        </p>
-          <p>
-            It is said that one time Kyewaalabye was waging an expansion war against the Banyoro, and got tired, before he slept, he assigned the women to keep watch and to wake the warriors up if anything suspicious happened; unfortunately however, even the women fell into deep sleep. If the dogs had not taken over the responsibility of watching over the camp, the Banyoro would have made a surprise attack on Kyewaalabye and his men.
-
-        </p>
-          <p>
-            There was a Munyoro black Smith living in Kaabyuma village he was called Lukubabyuma. In this village there were iron deposits, which Lukababyuma would mine, smelt and make implements of metal. Kyewaalabye chased the black smith from the village. The village's name has its etymology from "byuma" meaning metal, hence Kaabyuma meaning a village of iron (metal).
-
-
-        </p>
-          <p>
-            3. Ssebuliba of Buddo, is another great Kkobe clan member of historical times. He lived and excelled during the reign of Kabaka Ssemakookiro. He was the man the Kabaka asked for a big favour. It is said that following directives of the Kabaka's fortuneteller, Ssebuliba was requested that he be locked in a grass-thatched house and it was set on fire. The aim of this was to tell whether Ssemakookiro would defeat Jjunju his brother or not. If Ssebuliba survived the fire, that would prove the Kabaka's victor and vice versa.
-
-        </p>
-          <p>
-            Ssebuliba survived the fire together with his dog, yet all his wives and children deserted him. He pampered the dog even the more after this incident, so the dog came out prominently even then.
-            Later Kabaka Ssemakookiro made Ssebuliba his Chief over Buddo Coronation grounds.
-
-
-        </p>
-        <p>
-            4. Mutumba, a great warrior during Kabaka Kyabaggu's time. He also played a role in expanding the Buganda Kingdom westwards. He chased the Banyoro chiefs that occupied Lubanja in Ssingo County together with their people.
-
-        </p>
-          <p>
-            Among the great Banyoro chiefs Mutumba chased was the great Namunkululu. After his victory Mutumba resolved to protect the new territory.
-
-        </p>
-          <p>
-            He got help from Namwamma who sent him men led by his son Ssebuliba. When Ssebuliba reached Lubanja area, he continued with conquering the Banyoro to the last one.
-
-        </p>
-          <p>
-            A legend goes that, one-day Ssebuliba was coming back home from war and he urinated in a small valley. The direction the urine took mysteriously became a source of a brook called Ssebuliba, to date. It is at the source of this river that Namwama planted "omutuba" for Ssebuliba, omutuba tree planting in this case served as the symbol for ownership of the land in question.
-
-        </p>
-          <p>
-            Prominent women of the Kkobe clan include Namale Nkomommo who was a king's court entertainer during Kabaka Edward Muteesa ll. Others were Hadija Namale, Maliyamy Namale among many others.
-
-        </p>
-        <p>
-         <strong> THE NINE SSIGA DEPARTMENTS OF KKOBE CLAN AND THEIR ANCESTRAL LOCATIONS
-        </strong></p>
-        <ol>
-          <li>Namukangula of Bongole, Mawokota</li>
-          <li>Lwabiriza of Katoolingo, Busiro</li>
-            <li>Kawuma of Wassozi, Mawokota</li>
-            <li>Kakinda of Jjalamba, Mawokota</li>
-            <li>Kabengwa of Bulumbu, Busiro</li>
-            <li>Kaseenya of Buseenya, Butambala</li>
-            <li>Wanda of Misindye, Mawokota</li>
-            <li>Busuulwa of Nkozi, Mawokota</li>
-            <li>Kayiwa of Buyiwa, Mawokota</li>
-          </ol> 
-          <p>
-            <p>
-              <strong>Olunyiriri lw'Akasolya (oluusi luyitibwa "olulangira")<br>
-              </strong>Waliwo n'olunyiriri lw'akasolya mu kika ky'Abekkobe olukulemberwa Omutaka Kyana e Ttiribogo luno nga lusibuka Buzimwa mu Mawokota. Luno lwe luvaamu abalya Obwannamwama. Olunyiriri luno (lyandibadde ssiga mu ngeri ya bulijjo) lwe luyitibwa olw'abalangira mu Bekkobe era lwo lwetuukira butereevu ku Namwama omukulu w'ekika. Lulimu emituba "emirangira" gino wammanga:  
-          </p>
-          <p><ol>
-            <li>Bukaba e Kawaala</li>
-            <li>Kavavagalo e Kayabwe, Mawokota</li>
-            <li>Kiragga e Katuuso, Mawokota</li>
-            <li>Kitemagwa e Magala, Mawokota</li>
-            <li>Magajja e Magala, Mawokota</li>
-            <li>Muwakanya e Magala, Mawokota</li>
-            <li>Nabbumba e Magala, Mawokota</li>
-            <li>Nakatanza e Vvumba, Mawokota</li>
-            <li>Nalugunju e Teketwe, Mawokota</li>
-            <li>Namateeka e Nkana Magya, Mawokota</li>
-            <li>Nankolazzibi e Kiwumu, Busiro</li>
-            <li>Nkweyambye e Mbizzinnya, Mawokota</li>
-            <li>Ntaate e Kiboga</li>
-            <li>Ssebitere e Maggya, Mawokota</li>
-            <li>Ssebuliba e Lubanja, Singo</li>
-            <li>Ssekkonge e Butamba, Mawokota</li>
-            <li>Ssemombwe e Kisaliza, Busujju</li>
-          </ol>
-          
-        </p>      
-      </div>
-      <a href="javascript:void(0)" id="readMoreBtn" onclick="toggleReadMore()"><strong> Read more...</strong></a>
-    </div>
-  </section>
-
-<!-- Family Members Section -->
-<section id="family-members" class="container mt-5">
-  <h2>Family Members</h2>
-  <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. Here are some of the descendants:</p>
-  <ol>
-    <li data-member="Mutumba Jesse Paul"data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Mutumba Jesse Paul</li>
-    <li data-member="Nsereko Moses "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nsereko Moses</li>
-    <li data-member="Kawuma Derrick "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Kawuma Derrick</li>
-    <li data-member="Nakayiwa Jane "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nakayiwa Jane </li>
-    <li data-member="Ssebuliba Enock "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Ssebuliba Enock</li>
-    <li data-member="Nakakaawa Jane "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nakakaawa Jane</li>
-    <li data-member="Nantumbwe Winnie "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nantumbwe Winnie</li>
-    <li data-member="Nsereko Eriab "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nsereko Eriab</li>
-    <li data-member="Kayongo Samuel "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Kayongo Samuel</li>
-    <li data-member="Mulungi Liam "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Mulungi Liam</li>
-    <li data-member="Ssekamatte Raymond "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Ssekamatte Raymond</li>
-    <li data-member="Ssuubi Miriam "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Ssuubi Miriam</li>
-    <li data-member="Kyewalabye Collines "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Kyewalabye Collines</li>
-    <li data-member="Ssebuliba Hannington "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Ssebuliba Hannington</li>
-    <li data-member="Ezra Enock Mugabi Ssebuliba "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Ezra Enock Mugabi Ssebuliba</li>
-    <li data-member="Christine Rhona Nantumbwe Kwagalakwe "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Christine Rhona Nantumbwe Kwagalakwe</li>
-    <li data-member="Joel Silas Busuulwa "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Joel Silas Busuulwa </li>
-    <li data-member="Cathryn Nsereko "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Cathryn Nsereko</li>
-    <li data-member="Hannington Lule "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Hannington Lule</li>
-    <li data-member="Arnold Paul Enock Ssebuliba "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Arnold Paul Enock Ssebuliba</li>
-    <li data-member="Christine Liz Nalule  "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Christine Liz Nalule </li>
-    <li data-member="Enock Mugabi Ssebuliba "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Enock Mugabi Ssebuliba</li>
-    <li data-member="Gladys Grace Nambalirwa Tendo "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Gladys Grace Nambalirwa Tendo</li>
-    <li data-member="Nambalirwa Vivian Faith Kwagalakwe "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nambalirwa Vivian Faith Kwagalakwe</li>
-    <li data-member="David Ssebuliba "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">David Ssebuliba </li>
-    <li data-member="Nakakaawa Jane "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nakakaawa Jane</li>
-    <li data-member="Nakakaawa Primah "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nakakaawa Primah</li>
-    <li data-member="Nakakaawa Mariam "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nakakaawa Mariam </li>
-    <li data-member="Nantumbwe Winnie "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nantumbwe Winnie</li>
-    <li data-member="Nantumbwe Nilsar "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nantumbwe Nilsar</li>
-    <li data-member="Namale Agnes "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Namale Agnes </li>
-    <li data-member="Ssebuliba David "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Ssebuliba David</li>
-    <li data-member="Mutumba Gideon Divine "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Mutumba Gideon Divine </li>
-    <li data-member="Busuulwa Emmie Ssebuliba "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Busuulwa Emmie Ssebuliba</li>
-    <li data-member="Carol Grace Nantege Kwagalakwe "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Carol Grace Nantege Kwagalakwe</li>
-    <li data-member="Nantege Gloria "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nantege Gloria </li>
-    <li data-member="Mutumba Joel "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Mutumba Joel</li>
-    <li data-member="Nantumbwe Eve Laurine "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Nantumbwe Eve Laurine</li>
-    <li data-member="Namale Linda "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Namale Linda</li>
-    <li data-member="Henry Mugera Mayanja "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Henry Mugera Mayanja</li>
-    <li data-member="Racheal Ttendo Nantege "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Racheal Ttendo Nantege</li>
-    <li data-member="Mutambuze Saul "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Mutambuze Saul</li>
-    <li data-member="Ssenga Sarah "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Ssenga Sarah</li>
-    <li data-member="Winnie Angella "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Winnie Angella</li>
-    <li data-member="Sheilah "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Sheilah</li>
-    <li data-member="Declyne "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Declyne</li>
-    <li data-member="Kyle "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Kyle</li>
-    <li data-member="Lianah "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Lianah</li>
-    <li data-member="Esau "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Esau</li>
-    <li data-member="Tivia "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Tivia</li>
-    <li data-member="Eric "data-age="" data-contact="+256" data-location="Kampala" data-parents="" data-image="">Eric</li>
-      </ol>
-</section>
-
-
-<!-- Photo Gallery Section -->
-<section id="photo-gallery" class="container mt-5">
-  <h2>Photo Gallery</h2>
+            <div>
+              <h3>%h</h3>
+              <h4>Hours</h4>
+            </div>
+            <div>
+              <h3>%m</h3>
+              <h4>Minutes</h4>
+            </div>
+            <div>
+              <h3>%s</h3>
+              <h4>Seconds</h4>
+            </div>
+          </div>
   
-  <div class="gallery">
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    <a data-fancybox="gallery" data-caption="Caption for Image 1" href="7a3056be657192eba23d8f0781ab8eeb.jpg">
-      <img src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Image 1">
-    </a>
-    
-    <a data-fancybox="gallery" data-caption="Caption for Image 2" href="jumbotron.jpg">
-      <img src="jumbotron.jpg" alt="Image 2">
-    </a>
-    
-    <!-- Add more images with similar structure -->
-  </div>
-</section>
+      </header>
 
-<!-- Overview Section -->
-<section id="family-overview" class="container mt-5">
-  <h2>Ancestral Home</h2>
-  <p>Our ancestral home belongs to the Late Reverend Enock Kyaluzi Ssebuliba and it is located at Kikungwe, a village in Kkingo, Bukoto County, Central Uganda.</p>
-</section>
+<div class="container">
+    <h1 class="text-center">AGENDA</h1>
+    <!-- Add the download link and statement at the top -->
+    <div class="event">
+        <p>This is a summary of the event. If you need the full event, <a href="Speech Day Programme.pdf" download><b>click here</b> </a>to download it.</p>
+    </div>
+    <div class="event">
+        <h2>Arrival</h2>
+        <ul>
+            <li>Arrival and preparation for the event including the sound system and seating arrangements.</li>
+        </ul>
+        
+        <h2>Band</h2>        <ul>
+            <li>The function begins with a lively march led by the band.</li>
+        </ul>
+        
+        <h2>Breakfast</h2>        <ul>
+            <li>Attendees will gather for breakfast to start the day.</li>
+        </ul>
+    
+        <h2>Anthems</h2>
+        <ul>
+            The school choir will perform the following anthems:
+            <li>EAC Anthem
+                <div class="audio-container">
+                    <audio controls>
+                        <source src="SnapInsta.io - Ee Mungu twaomba uilinde Jumuia ya Afrika mashariki (64 kbps).mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </li>
+            <li>Uganda National Anthem
+                <div class="audio-container">
+                    <audio controls>
+                        <source src="SnapInsta.io - Uganda National Anthem ft Kenneth Mugabi And The Cherubim Chamber Chorale (64 kbps).mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </li>
+            <li>Ekitiibwa Kya Buganda
+                <div class="audio-container">
+                    <audio controls>
+                        <source src="SnapInsta.io - Buganda Anthem Ekitiibwa kya Buganda (Lyrics) (64 kbps).mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </li>
+            <li>School Anthem
+                <div class="audio-container">
+                    <audio controls>
+                        <source src="school_anthem.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </li>
+        </ul>
+    
+        <h2>Prayer</h2>
+        <ul>
+            <li>A brief opening prayer to invoke blessings on the event and hand it over to the Almighty God.</li>
+        </ul>
+        <h2>Speeches</h2>
+        <p>
+            - Speech from the Headteacher<br>
+            - Speech by the Director<br>
+            - Speech from The Guest of Honour
+        </p>
+    </div>
 
+    
 
-<!-- Map Section -->
-<section id="family-location" class="container mt-3">
-  <div class="map-container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.730053557498!2d31.662170135822333!3d-0.3811189353008027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d78879ad6c2299%3A0x14a547d3f848ec77!2sKikungwe%20Church%20Of%20Uganda!5e0!3m2!1sen!2sug!4v1701506240101!5m2!1sen!2sug" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</section>
+        <div class="event">
+            <h2>Entertainment</h2>
+            <p>There will be entertainment from various classes.</p>
 
-<!-- Footer Section -->
-<footer>
-  <p>&copy; Ssebuliba Family | <span id="currentYear"></span> | All Rights Reserved</p>
-</footer>
+            <div class="event">
+                <!-- Button to toggle the display of the class list -->
+                <button type="button" class="btn btn-primary" onclick="toggleClassList()">
+                    View All Classes
+                </button>
+            
+                <!-- Class list div (initially hidden) -->
+                <div id="classList" style="display: none;">
+                    <h3>Entertainment List</h3>
+                    <ul><b>
+                        <!-- Add each class as a list item -->
+                        <li><a href="#" onclick="showClassItems('Staff Members')">Staff Members</a></li>
+                        <li><a href="#" onclick="showClassItems('School Choir')">School Choir</a></li>
+                        <li><a href="#" onclick="showClassItems('Baby Class')">Baby Class</a></li>
+                        <li><a href="#" onclick="showClassItems('Middle Class')">Middle Class</a></li>
+                        <li><a href="#" onclick="showClassItems('Top Class')">Top Class</a></li>
+                        <li><a href="#" onclick="showClassItems('P.1 Class')">P.1 Class</a></li>
+                        <li><a href="#" onclick="showClassItems('P.2 Class')">P.2 Class</a></li>
+                        <li><a href="#" onclick="showClassItems('P.3 Class')">P.3 Class</a></li>
+                        <li><a href="#" onclick="showClassItems('P.4 Class')">P.4 Class</a></li>
+                        <li><a href="#" onclick="showClassItems('P.5 Class')">P.5 Class</a></li>
+                        <li><a href="#" onclick="showClassItems('P.6 Class')">P.6 Class</a></li>
+                    </b><!-- Add more list items as needed -->
+                    </ul>
+                </div>
+            
+                <!-- Modal for Class Items -->
+                <div id="classItemsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="classItemsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="classItemsModalLabel">Class Items</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Content for each class will be dynamically loaded here -->
+                                <div id="classItemsContent"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- JavaScript function to show class items in modal -->
+            <script>
+    function showClassItems(className) {
+        // Set the modal title to the class name
+        var classItemsModalLabel = document.getElementById('classItemsModalLabel');
+        classItemsModalLabel.innerHTML = "Item(s) Presented by " + className;
 
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        // Show the modal
+        $('#classItemsModal').modal('show');
 
-  <script>
-
-document.getElementById('currentYear').innerText = new Date().getFullYear();
-
-    // Toggle read more/less functionality
-    function toggleReadMore() {
-      var moreText = document.querySelector('.read-more-content');
-      var btnText = document.getElementById("readMoreBtn");
-
-      if (moreText.style.display === "none") {
-        moreText.style.display = "inline";
-        btnText.innerHTML = " Show less";
-      } else {
-        moreText.style.display = "none";
-        btnText.innerHTML = " Read more";
-      }
+        // Dynamically load content for each class
+        var classItemsContent = document.getElementById('classItemsContent');
+        classItemsContent.innerHTML = "<p>This is a placeholder for class items of " + className + ". Customize as needed.</p>";
     }
 
-    $(document).ready(function() {
-      // Show the modal on page load
-      $('#usernameModal').modal('show');
+    function showClassContent(classTitle, classItems) {
+        // Update the modal title
+        document.getElementById('classTitle').innerHTML = classTitle;
 
-      // Handle form submission
-      $('#usernameForm').submit(function(e) {
-        e.preventDefault();
-        // Get the entered username
-        var username = $('#username').val().toLowerCase(); // Convert to lowercase
+        // Update the modal content
+        document.getElementById('classContent').innerHTML = classItems;
 
-        // List of allowed family names (lowercase)
-        var allowedNames = [
-        "bakiranze", "balasa", "balimunsi", "bampigga", "bamwanjula", "bitalo", "bululu", "busuulwa",
-          "jjuuzi", "kabengwa", "kabizzi", "kaddu", "kasala", "katembe", "kateta", "kavavagalo", "kawuma",
-          "kayiwa", "kayongo", "kaziro", "kibaya", "kibombo", "kibugo", "kigembe", "kikaawa", "kiki", "kimanje",
-          "kinaalwa", "kirabira", "kiragga", "kiregeya", "kironde", "kitemagwa", "kivumu", "kizito", "kkonde",
-          "kkulanju", "kyambalango", "kyewalabye", "lukookera", "lule", "lwabiriza", "mabingo", "mabiriizi", "magaja",
-          "magala", "magoma", "makokwa", "male", "masanda", "mayengo", "mbiro", "mirundi", "misango", "miwanda",
-          "mpaka", "mugubya", "mujwiga", "mukaddemwangu", "mukooki", "mulaalira", "mulungu", "muluuli", "musuyi",
-          "muteeweta", "mutumba", "muwakanya", "nabbumba", "nabbwaga", "nakanyakaali", "nakatanza", "nankalanguse",
-          "nannyumba", "naayinda", "nkangufu", "nkayivu", "nnyago", "nogoli", "nsereko", "nsozi", "ntanzi", "ntembo",
-          "nviiri", "sikweyama", "ssebabi", "ssebatindira", "ssebitengero", "ssebuliba", "ssejjongo", "ssekamatte",
-          "ssekiremba", "ssekkonge", "ssemagulu", "ssemagwatala", "ssematimba", "ssemiti", "ssemmombwe", "ssennyomo",
-          "ssennyondo", "ssentumbwe", "sserukomaga", "ssettuba", "ssevvume", "ssewakiryanga", "ssikyemanywa",
-          "tebakyagenda", "waakuze", "walubandwa", "wantaate", "zingobukeedo", "balilaanye", "katana", "kiwaamaaso",
-          "kiwabudde", "lwantanya", "mbatudde", "mbawadde", "nababi", "nabanoba", "nabikaajumbe", "nabitengero", "nabwami",
-          "nabweggamo", "najjolo", "nakakaawa", "nakalembe", "nakamatte", "nakasinde", "nakatudde", "nakawuma", "nakayiwa",
-          "nakibuule", "nalule", "nalwanga", "namale", "nambalirwa", "nambi", "namboga", "nambooze", "namboyera", "nammembe",
-          "nango", "nansereko", "nantege", "nantumbwe", "nassimbwa", "ndyona", "nnaamala", "ntabadde"        ];
+        // Show the modal
+        $('#classModal2').modal('show');
+    }
 
-        // Check if the entered username is in the allowed list
-        if (allowedNames.includes(username)) {
-          // Update the welcome message on the page
-          $('#welcomeMessage').text('Hi ' + username.charAt(0).toUpperCase() + username.slice(1) + ', welcome to the Ssebuliba Family Group.');
-          // Close the modal
-          $('#usernameModal').modal('hide');
-        } else {
-          // Display an error message or take appropriate action
-          alert('Access denied! The name you used does not belong to the Kkobe Clan. Please try again...');
+            
+                // JavaScript function to toggle the display of class list and update button text
+                function toggleClassList() {
+                    var classList = document.getElementById('classList');
+                    var button = document.querySelector('.btn-primary');
+            
+                    if (classList.style.display === 'none') {
+                        classList.style.display = 'block';
+                        button.innerHTML = 'Hide List';
+                    } else {
+                        classList.style.display = 'none';
+                        button.innerHTML = 'View Full List';
+                    }
+                }
+            </script>
+
+<!-- JavaScript function to show class items in modal -->
+<script>
+        // Variable to store the currently playing audio element
+        var currentlyPlaying;
+
+function playAudio(audioId) {
+    // If there is an audio element currently playing, stop it
+    if (currentlyPlaying) {
+        currentlyPlaying.pause();
+        currentlyPlaying.currentTime = 0;
+    }
+
+    // Play the selected audio
+    var audio = document.getElementById(audioId);
+    audio.play();
+    currentlyPlaying = audio;
+}
+
+    function showClassItems(className) {
+        // Set the modal title to the class name
+        var classItemsModalLabel = document.getElementById('classItemsModalLabel');
+        classItemsModalLabel.innerHTML = "Item(s) Presented by " + className;
+
+        // Show the modal
+        $('#classItemsModal').modal('show');
+
+        // Dynamically load content for each class
+        var classItemsContent = document.getElementById('classItemsContent');
+
+        // Customize content based on the selected class
+        switch (className) {
+            case 'Staff Members':
+                classItemsContent.innerHTML = `
+                    <p>
+
+                        <strong> 1. Presentation of a dance named "Min Tuke"
+</strong>
+                    </p>
+
+                    <!-- Audio players for songs -->
+                    <div class="audio-container">
+                        <p>Song Name: "Min Tuke"</p>
+                        <audio controls id="topClassWelcomeParentsAudio">
+                            <source src="MIN TUKE DANCE.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <!-- Add additional audio containers as needed for poems and off-stage songs -->
+                </div>`;
+                break;
+                case 'School Choir':
+                classItemsContent.innerHTML = `
+                    <p>
+
+                        <strong> 1. Presentation of a song named "Jingle Bells".<br>2. Presentation of a song named "Joy to the World".<br>3. Presentation of a song named "Midodo".<br>4. Presentation of a song named "Ssekukkulu".<br>
+</strong>
+                    </p>
+
+                    <!-- Audio players for songs -->
+                    <div class="audio-container">
+                        <p>Song Name: "Jingle Bells"</p>
+                        <audio controls id="topClassWelcomeParentsAudio">
+                            <source src="Jingle Bells.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-container">
+                        <p>Song Name: "Joy to the World"</p>
+                        <audio controls id="topClassWelcomeParentsAudio">
+                            <source src="Joy to the world - bonny m.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-container">
+                        <p>Song Name: "Midodo"</p>
+                        <audio controls id="topClassWelcomeParentsAudio">
+                            <source src="Midodo-Brenda Fassie.MP3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-container">
+                        <p>Song Name: "Ssekukkulu"</p>
+                        <audio controls id="topClassWelcomeParentsAudio">
+                            <source src="Sekukulu - Judith Babirye[mss]0756543316.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <!-- Add additional audio containers as needed for poems and off-stage songs -->
+                </div>`;
+                break;
+            case 'Baby Class':
+                classItemsContent.innerHTML = `
+                    <p>
+
+                        <strong>1. A welcoming song named "This is Baby Class."<br>2. A song named "Okuzaala Kujagana" <br>3. A song entitled "Apaasa Apaasa".
+</strong>
+                    </p>
+
+                    <!-- Audio players for songs -->
+                    <div class="audio-container">
+                        <p>Song: "Okuzaala Kujaagaana"</p>
+                        <audio controls id="babyClassWelcomeParentsAudio">
+                            <source src="Okuzaala Kujagana ~ Irene Namatovu.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="audio-container">
+                        <p>Song: "Apaasa Apaasa"</p>
+                        <audio controls id="babyClassApaasaAudio">
+                            <source src="Apassa apassa - Amooti Omubalanguzi.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>`;
+                break;
+                case 'Middle Class':
+    classItemsContent.innerHTML = `
+    <p>
+            <strong>1. An on-stage and off-stage song named "Eat Well". </strong>
+        </p>
+        
+        <!-- Audio player for the third song -->
+        <div class="audio-container">
+            <audio controls id="middleClassEkwuemeAudio">
+                <source src="Eat Well - Rema (erycom)_1530289967.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <p>
+            <strong>2. A song called "I'm a Miracle". </strong>
+        </p>
+        
+        <!-- Audio player for the first song -->
+        <div class="audio-container">
+            <audio controls id="middleClassImAMiracleAudio">
+                <source src="I'm a miracle lyrics-Ada (64 kbps).mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <p>
+            <strong>2. A song named "Eyalama Noi Noi" . </strong>
+        </p>
+        
+        <!-- Audio player for the second song -->
+        <div class="audio-container">
+            <audio controls id="middleClassEyalamaNoiNoiAudio">
+                <source src="EYALAMA NOI-NOI - JOY TENDO MATA (64 kbps).mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <p>
+            <strong>3. A song named "Ekwueme" . </strong>
+        </p>
+        
+        <!-- Audio player for the third song -->
+        <div class="audio-container">
+            <audio controls id="middleClassEkwuemeAudio">
+                <source src="Ekwueme feat. Osinachi (Live Ministration) (64 kbps).mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <p>
+            <strong>4. A song named "Ntondole". </strong>
+        </p>
+        
+        <!-- Audio player for the third song -->
+        <div class="audio-container">
+            <audio controls id="middleClassEkwuemeAudio">
+                <source src="NTONDOLE-URBAN CHIEF (BUGWERE MUSIC) OFFICIAL MUSIC VIDEO (64 kbps).mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+
+        <p>
+            <strong>5. A creative dance. </strong>
+        </p>
+
+        <!-- Audio player for the fourth song (dance) -->
+        <div class="audio-container">
+            <!-- Add your dance audio source here -->
+            <audio controls id="middleClassCreativeDanceAudio">
+                <source src="CREATIVE DANCE.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>`;
+    break;
+    case 'Top Class':
+                classItemsContent.innerHTML = `
+                    <p>
+
+                        <strong> 1. An on-stage and off-stage song named "Wannaaza". <br> 2. A poem about trees. <br>3.  Presentation of "Kadodi" by the Bagisu of Eastern 
+Uganda.<br>4. A song named "Stress". <br>5.A song named "Oli wa Mukisa"
+</strong>
+                    </p>
+
+                    <!-- Audio players for songs -->
+                    <div class="audio-container">
+                        <p>Song: "Welcoming Song: Wannaaza"</p>
+                        <audio controls id="topClassWelcomeParentsAudio">
+                            <source src="WANAAZA  (official HD video) Pastor Wilson Bugembe ft Rhoda K (64 kbps).mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-container">
+                        <p>Song: "Kadodi Dance"</p>
+                        <audio controls id="topClassWelcomeParentsAudio">
+                            <source src="KADODI INSTRUMENTAL (AFRICAN DRUMS) (64 kbps).mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-container">
+                        <p>Song: "Stress"</p>
+                        <audio controls id="topClassWelcomeParentsAudio">
+                            <source src="Stabua - Stress.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    
+
+                    <div class="audio-container">
+                        <p>Song: "Oli wa Mukisa"</p>
+                        <audio controls id="topClassMainSongAudio">
+                            <source src="OliWAMukisa - StabuaNatooro.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <!-- Add additional audio containers as needed for poems and off-stage songs -->
+                </div>`;
+                break;
+
+                case 'P.1 Class':
+        classItemsContent.innerHTML = `
+            <p>
+
+                <strong>1. A poem.<br>2. A song named "Bazadde Munnyambe"<br>3. An onstage song named "African Beauty" 4. An off-stage song named "Wana Wankya". </strong>
+            </p>
+
+            <!-- Audio players for songs -->
+            <div class="audio-container">
+                <p>Song Name: "Bazadde Munnyambe"</p>
+                <audio controls id="p1ClassBazaddeAudio">
+                    <source src="BAZADDE===BUDDO S S (64 kbps).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="audio-container">
+                <p>Song Name: "African Beauty"</p>
+                <audio controls id="p1ClassBazaddeAudio">
+                    <source src="African Beauty.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="audio-container">
+                <p>Song Name: "Wana Wankya"</p>
+                <audio controls id="p1ClassBazaddeAudio">
+                    <source src="Wana wankya.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            
+            `;
+        break;
+
+    case 'P.2 Class':
+        classItemsContent.innerHTML = `
+            <p>
+                <strong>1. A poem.<br> 2. A song named "Muserebende."<br> 3. A song named "Emali."</strong>
+            </p>
+
+            <!-- Audio players for songs -->
+            <div class="audio-container">
+                <p>Song Name: "Muserebende"</p>
+                <audio controls id="p2ClassMuselebendeAudio">
+                    <source src="Muserebende By Urban Chief Ft. Pretty Zoa (Official AUDIO 2022) (64 kbps).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <!-- Audio players for songs -->
+            <div class="audio-container">
+                <p>Song Name: "Emali"</p>
+                <audio controls id="p2ClassMuselebendeAudio">
+                    <source src="Emali Ateso song (Orignial Audio version) (128 kbps).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            
+            `;
+        break;
+
+    case 'P.3 Class':
+        classItemsContent.innerHTML = `
+            <p>
+
+                <strong>1. A song named "Mummy's Love."<br>2. A song named "Amaddu Lumbe."<br>3. A song named "Essomero."<br>4. A song named "Akati."<br>5. A song named "Wale Wale"</strong>
+      
+           
+            </p>
+
+            <!-- Audio players for songs -->
+            <div class="audio-container">
+                <p>Song Name: "Amaddu Lumbe"</p>
+                <audio controls id="p3ClassMummysLoveAudio">
+                    <source src="Amaddu.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-container">
+                <p>Song Name: "Nze Ninze"</p>
+                <audio controls id="p3ClassAmadduLumbeAudio">
+                    <source src="Buddo S S S - Nze Ninze.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-container">
+                <p>Song Name: "Wale Wale"</p>
+                <audio controls id="p3ClassEssomeroAudio">
+                    <source src="Wale Wale ~  Dr. Chameleon.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>`;
+        break;
+
+        case 'P.4 Class':
+        classItemsContent.innerHTML = `
+            <p>
+
+                <strong>1. An on-stage and off-stage named "Term Egenda" <br>2. A song titled "Today is Me".<br>3. A song named "Goodbye."<br>4. A song entitled "Omwana Aba W'ani" by Laila Kachapizo.<br>5. A traditional dance called "Boo Piny"
+for the Acholi. 
+
+</strong>
+            </p>
+
+            <!-- Audio players for songs -->
+            <div class="audio-container">
+                <p>Song Name: "Term Egenda"</p>
+                <audio controls id="p4ClassTodayIsMeAudio">
+                    <source src="Term Egeenda.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="audio-container">
+                <p>Song Name: "Boo Piny"</p>
+                <audio controls id="p4ClassTodayIsMeAudio">
+                    <source src="Boo piny.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="audio-container">
+                <p>Song Name: "Omwana W'ani"</p>
+                <audio controls id="p4ClassTodayIsMeAudio">
+                    <source src="omwana_wani_umaru_mwanje_official_video_mp3_20155.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-container">
+                <p>Song Name: "Today is Me"</p>
+                <audio controls id="p4ClassTodayIsMeAudio">
+                    <source src="TODAY IS ME.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <!-- Add additional audio containers as needed for other songs or items -->
+        </div>`;
+        break;
+
+    case 'P.5 Class':
+        classItemsContent.innerHTML = `
+            <p>
+
+                <strong>1. A drama about education.<br>2. A poem. <br>3. A song called "Ajosi." <br>4. A song named "Ayongata."<br>5. A song named "I'll Go". <br> 6. A song entitled "Joy Overflow". </strong>
+                
+            </p>
+
+            <!-- Audio players for songs -->
+            <div class="audio-container">
+                <p>Song Name: "I'll Go"</p>
+                <audio controls id="p5ClassAjosiAudio">
+                    <source src="I WILL GO.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-container">
+                <p>Song Name: "Joy Overflow"</p>
+                <audio controls id="p5ClassAyongataAudio">
+                    <source src="JOY OVERFLOW.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="audio-container">
+                <p>Song Name: "Ajosi"</p>
+                <audio controls id="p5ClassAjosiAudio">
+                    <source src="AJOSI - THE ROYAL DANCE BY WERA MOTO MOTO AKOGO GROUP - EJOKO YESU (64 kbps).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="audio-container">
+                <p>Song Name: "Ayongata"</p>
+                <audio controls id="p5ClassAyongataAudio">
+                    <source src="Ayongata Einono_Epitene lo Iteso led by Uncle Ben.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <!-- Add additional audio containers as needed for other songs or items -->
+        </div>`;
+        break;
+
+    case 'P.6 Class':
+        classItemsContent.innerHTML = `
+            <p>
+
+                <strong>1. A poem. <br>2. A song named "Victory." </strong>
+                
+            </p>
+
+
+            <!-- Add additional audio containers as needed for other songs or items -->
+        </div>`;
+        break;
+
+                
+            // Add cases for other classes as needed
         }
-      });
-    });
-  </script>
+    }
+</script>
+
+
+            <!-- Add more modals for other classes as needed -->
+        </div>
+
+    <div class="event">
+        <h2>Graduation</h2>
+        <p>The Guest of Honour will crown the Top Class Graduands after his speech.</p>
+        <!-- Button to toggle the display of the graduation list -->
+        <button type="button" class="btn btn-primary" onclick="toggleGraduationList()">
+            View Graduation List
+        </button><br>
+
+<!-- Graduation list div (initially hidden) -->
+<div id="graduationList" style="display: none;">
+    <h3>Graduation List</h3>
+    <ul>
+      <b>  <!-- Add each graduand as a list item -->
+        <li><a href="#" onclick="showGraduand('20231124_102544.jpg', 'Norah Hamidah Haimus')">Norah Hamidah Haimus</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_102718.jpg', 'Musenero Prossy')">Musenero Prossy</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_102942.jpg', 'Kavugho Tania')">Kavugho Tania</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_103205.jpg', 'Ainembabazi Treasure Dorothy')">Ainembabazi Treasure Dorothy</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_103635.jpg', 'Ssemakula Musa')">Ssemakula Musa</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_103833.jpg', 'Zawedde Fahimidah')">Zawedde Fahimidah</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_104044.jpg', 'Wakabi Chrispus')">Wakabi Chrispus</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_104256.jpg', 'Musasizi Cherry')">Musasizi Cherry</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_104539.jpg', 'Nambooze Melisa')">Nambooze Melisa</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_104718.jpg', 'Kwagala Anisha Mercy')">Kwagala Anisha Mercy</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_105159.jpg', 'Luwedde Abigail')">Luwedde Abigail</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_105428.jpg', 'Baluka Shakirah')">Baluka Shakirah</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_112332.jpg', 'Kakule Daniel')">Kakule Daniel</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_112654.jpg', 'Shamariah Namulinda')">Shamariah Namulinda</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_112812.jpg', 'Nalugo Alexandra')">Nalugo Alexandra</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_112937.jpg', 'Sserwanja Precious Shalom')">Sserwanja Precious Shalom</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_113246.jpg', 'Mbabazi Quin Esther')">Mbabazi Quin Esther</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_113437.jpg', 'Kasereka Ephraim')">Kasereka Ephraim</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_113606.jpg', 'Joshua')">Joshua</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_113741.jpg', 'Derrick')">Derrick</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_113906.jpg', 'Mungola Hashim')">Mungola Hashim</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_114100.jpg', 'Nalukindu Waldah')">Nalukindu Waldah</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_114224.jpg', 'Joshua')">Joshua</a></li>
+        <li><a href="#" onclick="showGraduand('20231124_114415.jpg', 'Derrick')">Derrick</a></li>    </b>          </ul>
+               <!-- Display graduand photo here -->
+               <div id="graduandPhotoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="graduandPhotoModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="graduandPhotoModalLabel">Graduand Photo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="selectedGraduandPhoto" src="" alt="Graduand" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript function to show graduand photo -->
+<script>
+  function showGraduand(photoSrc, graduandName) {
+        var selectedGraduandPhoto = document.getElementById('selectedGraduandPhoto');
+        selectedGraduandPhoto.src = photoSrc;
+        
+        // Set the modal title to the graduand's name
+        var graduandPhotoModalLabel = document.getElementById('graduandPhotoModalLabel');
+        graduandPhotoModalLabel.innerHTML = "Graduand's Name: " + graduandName;
+
+        // Show the modal
+        $('#graduandPhotoModal').modal('show');
+    }
+    
+// JavaScript function to toggle the display of graduation list and update button text
+function toggleGraduationList() {
+        var graduationList = document.getElementById('graduationList');
+        var button = document.querySelector('.btn-primary');
+
+        if (graduationList.style.display === 'none') {
+            graduationList.style.display = 'block';
+            button.innerHTML = 'Hide Graduation List';
+        } else {
+            graduationList.style.display = 'none';
+            button.innerHTML = 'View Graduation List';
+        }
+    }
+
+    let countdown = document.querySelector('.countdown');
+  const output = countdown.innerHTML;
+
+  const countDownDate = function() {
+    let timeleft = new Date(countdown.getAttribute('data-count')).getTime() - new Date().getTime();
+
+    let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = output.replace('%d', days).replace('%h', hours).replace('%m', minutes).replace('%s', seconds);
+  }
+  countDownDate();
+  setInterval(countDownDate, 1000);
+</script>
+
+
+        <div class="event">
+            <br><h2>Closure</h2>
+            <p>A closing prayer will be made to end the day and the congregation will be dismissed.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+            function toggleGraduationList() {
+        var graduationList = document.getElementById('graduationList');
+        if (graduationList.style.display === 'none') {
+            graduationList.style.display = 'block';
+        } else {
+            graduationList.style.display = 'none';
+        }
+    }
+        function playAudio(audioId, audioFile) {
+            // Pause all other audio elements before playing a new one
+            var audioElements = document.querySelectorAll('.audio-container audio');
+            audioElements.forEach(function (element) {
+                element.pause();
+            });
+
+            // Hide all audio containers before showing the selected one
+            var audioContainers = document.querySelectorAll('.audio-container');
+            audioContainers.forEach(function (container) {
+                container.style.display = 'none';
+            });
+
+            // Show and play the selected audio
+            var selectedAudio = document.getElementById(audioId);
+            if (selectedAudio) {
+                var audioContainer = selectedAudio.closest('.audio-container');
+                if (audioContainer) {
+                    audioContainer.style.display = 'block';
+                    selectedAudio.play();
+                } else {
+                    console.error('Parent audio container not found.');
+                }
+            } else {
+                console.error('Audio element not found for ID: ' + audioId);
+            }
+        }
+    </script>
+<!-- Footer -->
+<footer class="footer" style="background-color: #ffffff; height: 100px; display: flex; justify-content: center; align-items: center;">
+    <div class="container">
+        <p style="text-align: center;"><br>
+            Made with <span style="color: red;">❦</span> by Mutumba Jesse Paul<br>
+            &copy; Fresh Teacher's Software <span id="currentYear"></span><br>
+            <a href="tel:+256750687790">0750687790</a> / <a href="tel:+256786812837">0786812837</a> <br>
+        </p>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- Your custom scripts here -->
+<script>
+    // Add the current year to the copyright notice
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
 </body>
+
 </html>
 
+</body>
+
+</html>
