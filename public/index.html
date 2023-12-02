@@ -15,6 +15,17 @@
   margin-bottom: 80px;
 }
 
+        /* Blinking animation */
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
 #header .countdown div {
   text-align: center;
   margin: 10px;
@@ -469,9 +480,9 @@
 <section id="family-members" class="container mt-5">
     <h2>Family Members</h2>
     <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. Here are some of the descendants:</p>
-    <ol id="familyList">
+     <strong><ol id="familyList">
       <!-- Add data-member attributes for each family member -->
-      <li data-member="Mutumba Jesse Paul"data-age="27" data-contact="0750687790" data-location="Namungoona" data-parents="Kyewalabye Robert" data-image="Mutumba Jesse Paul.jpg">Mutumba Jesse Paul</li>
+     <li data-member="Mutumba Jesse Paul"data-age="27" data-contact="0750687790" data-location="Namungoona" data-parents="Kyewalabye Robert" data-image="Mutumba Jesse Paul.jpg">Mutumba Jesse Paul</li>
       <li data-member="Nsereko Moses "data-age="62" data-contact="0771935360" data-location="Kkumbu" data-parents="Lt. Rev. Enock Ssebuliba" data-image="Nsereko Moses.jpg">Nsereko Moses</li>
       <li data-member="Kawuma Derrick "data-age="25" data-contact="+49 1575 4442199" data-location="Germany" data-parents="Kyewalabye Robert" data-image="Kawuma Derrick.jpg">Kawuma Derrick</li>
       <li data-member="Nakayiwa Jane Christine Birimuye Kwagalakwe Kiwumulo"data-age="28" data-contact="0779757278" data-location="Luweero" data-parents="" data-image="Nakayiwa Jane.jpg">Nakayiwa Jane Christine Birimuye Kwagalakwe Kiwumulo</li>
@@ -523,7 +534,7 @@
       <li data-member="Esau "data-age="26" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Esau</li>
       <li data-member="Tivia "data-age="14" data-contact="" data-location="Kamuli" data-parents="" data-image="no-image-available.png">Tivia</li>
       <li data-member="Eric "data-age="19" data-contact="" data-location="" data-parents="" data-image="no-image-available.png">Eric</li>
-    </ol>
+    </ol></strong>
   </section>
 
   
@@ -670,8 +681,17 @@
   </div>
 </section>
 
+
 <!-- Overview Section -->
 <section id="family-overview" class="container mt-5">
+
+    <br>
+    <h2>Entertainment</h2>
+    <p>
+        <span class="first-line">Enjoy thousands of free Luganda Translated Movies! You can either watch them online or download them for offline viewing.</span>
+    </p>
+    <p><a href="https://fresh-teacher.github.io/movie.html" class="btn btn-info blink"><strong>WATCH NOW! ▶️</strong></a></p>
+
   <h2>Ancestral Home</h2>
   <p>Our ancestral home belongs to the Late Reverend Enock Kyaluzi Ssebuliba and it is located at Kikungwe, a village in Kkingo, Bukoto County, Central Uganda.</p>
 </section>
