@@ -86,12 +86,12 @@
         <div class="modal-overlay"></div>
         
         <div class="modal-header">
-          <h5 class="modal-title">Enter Your Username</h5>
+          <h5 class="modal-title">Enter Your Kkobe Name</h5>
         </div>
         <div class="modal-body">
           <form id="usernameForm">
             <div class="form-group">
-              <label for="username">Username:</label>
+              <label for="username">Clan Name:</label>
               <input type="text" class="form-control" id="username" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -558,15 +558,26 @@ document.getElementById('currentYear').innerText = new Date().getFullYear();
             }
 
             // Update the welcome message on the page
-            $('#welcomeMessage').text(greeting + ' ' + username.charAt(0).toUpperCase() + username.slice(1) + '');
+          // Update the welcome message on the page
+          $('#welcomeMessage').text(greeting + ' ' + username.charAt(0).toUpperCase() + username.slice(1) + '🤝');
             // Close the modal
             $('#usernameModal').modal('hide');
+
+            // Text-to-speech
+            speak('You are most welcome');
         } else {
             // Display an error message or take appropriate action
             alert('Access denied! The name you used does not belong to the Kkobe Clan. Please try again...');
         }
     });
 });
+
+// Function to initiate text-to-speech
+function speak(text) {
+    var synth = window.speechSynthesis;
+    var utterance = new SpeechSynthesisUtterance(text);
+    synth.speak(utterance);
+}
 
   </script>
 </body>
