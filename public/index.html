@@ -112,9 +112,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="#history">History</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#achievements">Achievements</a>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#location">Location</a>
         </li>
@@ -123,9 +121,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#photo-gallery">Photo Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#importance">Importance</a>
         </li>
       </ul>
     </div>
@@ -330,81 +325,80 @@
         </p> 
         
 
+        <section id="documents" class="container mt-5">
+            <h2>Documents</h2>
+            <p>Explore the rich history of the Kkobe Clan through this book: <strong>Ekika Ky'Ekkobe</strong>.</p>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="Ekika Ky'ekkobe.PDF.pdf" allowfullscreen></iframe>
+            </div>
+        </section>
 
       </div>
       <a href="javascript:void(0)" id="readMoreBtn" onclick="toggleReadMore()"><strong> Read more...</strong></a>
     </div>
   </section>
 
-  <section id="documents" class="container mt-5">
-    <h2>Documents</h2>
-    <p>Explore the rich history of the Kkobe Clan through this book document: <strong>Ekika Ky'Ekkobe</strong>.</p>
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="Ekika Ky'ekkobe.PDF.pdf" allowfullscreen></iframe>
-    </div>
-</section>
 
 <!-- Family Members Section -->
 <section id="family-members" class="container mt-5">
-  <h2>Family Members</h2>
-  <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. Here are some of the descendants:</p>
-  <ol>
-    <li>Mutumba Jesse Paul</li>
-    <li>Nsereko Moses</li>
-    <li>Kawuma Derrick</li>
-    <li>Nakayiwa Jane</li>
-    <li>Ssebuliba Enock</li>
-    <li>Nakakaawa Jane</li>
-    <li>Nantumbwe Winnie</li>
-    <li>Nsereko Eriab</li>
-    <li>Kayongo Samuel</li>
-    <li>Mulungi Liam</li>
-    <li>Ssekamatte Raymond</li>
-    <li>Ssuubi Miriam</li>
-    <li>Kyewalabye Collines</li>
-    <li>Ssebuliba Hannington</li>
-    <li>Ezra Enock Mugabi Ssebuliba</li>
-    <li>Christine Rhona Nantumbwe Kwagalakwe</li>
-    <li>Joel Silas Busuulwa</li>
-    <li>Cathryn Nsereko</li>
-    <li>Hannington Lule</li>
-    <li>Arnold Paul Enock Ssebuliba</li>
-    <li>Christine Liz Nalule </li>
-    <li>Enock Mugabi Ssebuliba</li>
-    <li>Gladys Grace Nambalirwa Tendo</li>
-    <li>Nambalirwa Vivian Faith Kwagalakwe</li>
-    <li>David Ssebuliba</li>
-    <li>Nakakaawa Jane</li>
-    <li>Nakakaawa Primah</li>
-    <li>Nakakaawa Mariam</li>
-    <li>Nantumbwe Winnie</li>
-    <li>Nantumbwe Nilsar</li>
-    <li>Namale Agnes</li>
-    <li>Ssebuliba David</li>
-    <li>Mutumba Gideon Divine</li>
-    <li>Busuulwa Emmie Ssebuliba</li>
-    <li>Carol Grace Nantege Kwagalakwe</li>
-    <li>Nantege Gloria</li>
-    <li>Mutumba Joel</li>
-    <li>Nantumbwe Eve Laurine</li>
-    <li>Namale Linda</li>
-    <li>Henry Mugera Mayanja</li>
-    <li>Racheal Ttendo Nantege</li>
-    <li>Mutambuze Saul</li>
-    <li>Ssenga Sarah</li>
-    <li>Winnie Angella</li>
-    <li>Sheilah</li>
-    <li>Declyne</li>
-    <li>Kyle</li>
-    <li>Lianah</li>
-    <li>Esau</li>
-    <li>Tivia</li>
-    <li>Eric</li>
+    <h2>Family Members</h2>
+    <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. Here are some of the descendants:</p>
+    <ul id="familyList">
+      <li data-name="Mutumba Jesse Paul" data-age="" data-contact="" data-location="" data-parents="">Mutumba Jesse Paul</li>
+      <li data-name="Nsereko Moses" data-age="" data-contact="" data-location="" data-parents="">Nsereko Moses</li>
+      <li data-name="Kawuma Derrick" data-age="" data-contact="" data-location="" data-parents="">Kawuma Derrick</li>
+      <li data-name="Nakayiwa Jane" data-age="" data-contact="" data-location="" data-parents="">Nakayiwa Jane</li>
+      <li data-name="Ssebuliba Enock" data-age="" data-contact="" data-location="" data-parents="">Ssebuliba Enock</li>
+      <!-- Add more family members with similar data attributes -->
+    </ul>
+  </section>
+  
+  <!-- Family Member Modal -->
+  <div class="modal fade" id="familyMemberModal" tabindex="-1" role="dialog" aria-labelledby="familyMemberModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="familyMemberModalLabel">Family Member Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img id="modalThumbnail" src="7a3056be657192eba23d8f0781ab8eeb.jpg" alt="Family Member Thumbnail" class="img-thumbnail">
+          <p><strong>Name:</strong> <span id="modalName"></span></p>
+          <p><strong>Age:</strong> <span id="modalAge"></span></p>
+          <p><strong>Contact:</strong> <span id="modalContact"></span></p>
+          <p><strong>Location:</strong> <span id="modalLocation"></span></p>
+          <p><strong>Parents:</strong> <span id="modalParents"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
     
-    
-    <!-- Add more names as needed -->
-  </ol>
-</section>
+  <script>
+  $(document).ready(function() {
+      // Handle family member click events
+      $('#familyList li').on('click', function() {
+          // Get data attributes
+          var name = $(this).data('name');
+          var age = $(this).data('age');
+          var contact = $(this).data('contact');
+          var location = $(this).data('location');
+          var parents = $(this).data('parents');
+  
+          // Update modal content
+          $('#modalName').text(name);
+          $('#modalAge').text(age);
+          $('#modalContact').text(contact);
+          $('#modalLocation').text(location);
+          $('#modalParents').text(parents);
+  
+          // Display modal
+          $('#familyMemberModal').modal('show');
+      });
+  });
+  </script>
+  
 
 
 <!-- Photo Gallery Section -->
@@ -488,7 +482,7 @@
 
 
 <!-- Map Section -->
-<section id="family-location" class="container mt-3">
+<section id="location" class="container mt-3">
   <div class="map-container">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.730053557498!2d31.662170135822333!3d-0.3811189353008027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d78879ad6c2299%3A0x14a547d3f848ec77!2sKikungwe%20Church%20Of%20Uganda!5e0!3m2!1sen!2sug!4v1701506240101!5m2!1sen!2sug" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
@@ -518,7 +512,7 @@ document.getElementById('currentYear').innerText = new Date().getFullYear();
         btnText.innerHTML = " Show less";
       } else {
         moreText.style.display = "none";
-        btnText.innerHTML = " Read more";
+        btnText.innerHTML = " Read more...";
       }
     }
 
