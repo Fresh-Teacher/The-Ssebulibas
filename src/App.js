@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-const repo = "https://fresh-teacher.github.io/Movie-Site/npjs.html";
+const repo = "https://ssebuliba.vercel.app/NPJS%20App.apk";
 let deferredPrompt;  
     
 function App() {
@@ -41,14 +41,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Namungoona Parents' Junior School</h2>
+        <h2>Ssebuliba Family Group</h2>
         {installable &&
           <button className="install-button" onClick={handleInstallClick}>
-            INSTALL THE NPJS APP
+            INSTALL THE SSEBULIBAs APP
           </button>
         }
         <p>
-          <a href={repo} className="App-link">Sign In ✍️</a>
+          <a href={repo} className="App-link">Download the APK 📥</a>
         </p>
       </header>
     </div>
