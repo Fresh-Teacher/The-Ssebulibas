@@ -518,8 +518,8 @@ document.getElementById('currentYear').innerText = new Date().getFullYear();
     // Handle form submission
     $('#usernameForm').submit(function(e) {
         e.preventDefault();
-        // Get the entered username
-        var username = $('#username').val().toLowerCase(); // Convert to lowercase
+        // Get the entered username and trim leading/trailing spaces
+        var username = $('#username').val().trim().toLowerCase();
 
         // List of allowed family names (lowercase)
         var allowedNames = [
