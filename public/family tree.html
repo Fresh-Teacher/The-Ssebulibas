@@ -3,165 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Family Tree</title>
-  <!-- Add Bootstrap CDN links here -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <style>
     body {
-      background-color: #f8f9fa;
-    }
-    .container {
-      background-color: #fff;
-      border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    .text-center {
-      text-align: center;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin-bottom: 10px;
+
+    .family-tree {
+      margin-top: 20px;
     }
   </style>
+  <title>Family Tree</title>
 </head>
 <body>
 
-<div class="container mt-4 text-center">
-  <button class="btn btn-primary" id="toggleBtn">Expand Family Tree</button>
-  <div id="familyTree" class="mt-3">
-    <!-- Family tree content will be dynamically generated here -->
+<div class="container">
+  <button id="expandCollapseBtn" class="btn btn-primary">Expand Family Tree</button>
+
+  <div id="familyTree" class="family-tree" style="display: none;">
+    <h2 id="familyHeads">Enock and Christine's Children</h2>
+    <ul id="childrenList">
+      <li>
+        <button class="btn btn-link" data-toggle="modal" data-target="#child1Modal">Child 1</button>
+      </li>
+      <li>
+        <button class="btn btn-link" data-toggle="modal" data-target="#child2Modal">Child 2</button>
+      </li>
+      <li>
+        <button class="btn btn-link" data-toggle="modal" data-target="#child3Modal">Child 3</button>
+      </li>
+      <li>
+        <button class="btn btn-link" data-toggle="modal" data-target="#child4Modal">Child 4</button>
+      </li>
+      <li>
+        <button class="btn btn-link" data-toggle="modal" data-target="#child5Modal">Child 5</button>
+      </li>
+    </ul>
   </div>
+
+<!-- ... (previous code) ... -->
+
+<div class="modal fade" id="child1Modal" tabindex="-1" role="dialog" aria-labelledby="child1ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="child1ModalLabel">Child 1's Children</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>
+              <button class="btn btn-link" data-toggle="modal" data-target="#grandchild1Modal">Grandchild 1</button>
+            </li>
+            <li>
+              <button class="btn btn-link" data-toggle="modal" data-target="#grandchild2Modal">Grandchild 2</button>
+            </li>
+            <li>Grandchild 3</li>
+            <!-- Add more grandchildren here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Great-Grandchildren Modal for Grandchild 2 -->
+  <div class="modal fade" id="grandchild2Modal" tabindex="-1" role="dialog" aria-labelledby="grandchild2ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="grandchild2ModalLabel">Grandchild 2's Children</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Great-Grandchild 1</li>
+            <li>Great-Grandchild 2</li>
+            <!-- Add more great-grandchildren here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ... (previous code) ... -->
+  
+
+  <!-- Add Modals for other children -->
+
 </div>
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
-  // Family tree data for Enock and Christine
-  const familyTreeData = {
-    name: 'Enock and Christine',
-    children: [
-      {
-        name: 'Robert',
-        children: [
-          {
-            name: 'Grandchild 1',
-            children: [
-              { name: 'Great Grandchild 1' },
-              { name: 'Great Grandchild 2' },
-              // Add more great grandchildren as needed
-            ]
-          },
-          {
-            name: 'Grandchild 2',
-            children: [
-              { name: 'Great Grandchild 3' },
-              // Add more great grandchildren as needed
-            ]
-          },
-          // Add more grandchildren as needed
-        ]
-      },
-      {
-        name: 'Kawuma',
-        children: [
-          {
-            name: 'Grandchild 3',
-            children: [
-              // No great grandchildren for Grandchild 3 in this example
-            ]
-          },
-          // Add more grandchildren as needed
-        ]
-      },
-      {
-        name: 'Nsereko',
-        children: [
-          // No grandchildren for Nsereko in this example
-        ]
-      },
-      {
-        name: 'Sarah',
-        children: [
-          {
-            name: 'Grandchild 4',
-            children: [
-              { name: 'Great Grandchild 4' },
-              { name: 'Great Grandchild 5' },
-              // Add more great grandchildren as needed
-            ]
-          },
-          {
-            name: 'Grandchild 5',
-            children: [
-              { name: 'Great Grandchild 6' },
-              // Add more great grandchildren as needed
-            ]
-          },
-          // Add more grandchildren as needed
-        ]
-      },
-      {
-        name: 'Busuulwa',
-        children: [
-          {
-            name: 'Grandchild 6',
-            children: [
-              // No great grandchildren for Grandchild 6 in this example
-            ]
-          },
-          // Add more grandchildren as needed
-        ]
-      }
-    ]
-  };
-
-  // Function to generate family tree HTML
-  function generateFamilyTree(tree, depth = 0) {
-    const indent = '  '.repeat(depth);
-    let html = `${indent}<ul>\n${indent}  <li>${tree.name}`;
-
-    if (tree.children && tree.children.length > 0) {
-      html += `\n${indent}    <button class="btn btn-secondary btn-sm ml-2" onclick="toggleChildren(this, '${tree.name}')">Expand ${tree.name}'s Children</button>`;
-      html += `\n${indent}    <div class="children" style="display: none;">`;
-
-      tree.children.forEach(child => {
-        html += generateFamilyTree(child, depth + 1);
-      });
-
-      html += `${indent}    </div>`;
-    }
-
-    html += `${indent}  </li>\n${indent}</ul>`;
-    return html;
-  }
-
-  // Function to toggle visibility of children
-  function toggleChildren(btn, parentName) {
-    const childrenDiv = btn.nextElementSibling;
-    childrenDiv.style.display = childrenDiv.style.display === 'none' ? 'block' : 'none';
-    btn.innerText = childrenDiv.style.display === 'none' ? `Expand ${parentName}'s Children` : `Collapse ${parentName}'s Children`;
-  }
-
-  // Function to toggle the entire family tree
-  function toggleFamilyTree() {
-    const treeDiv = document.getElementById('familyTree');
-    treeDiv.innerHTML = generateFamilyTree(familyTreeData);
-  }
-
-  // Event listener for the main toggle button
-  document.getElementById('toggleBtn').addEventListener('click', function () {
-    const btn = this;
-    btn.innerText = btn.innerText === 'Expand Family Tree' ? 'Collapse Family Tree' : 'Expand Family Tree';
-    
-    if (btn.innerText === 'Collapse Family Tree') {
-      // Display Enock and Christine's information when the button is clicked
-      toggleFamilyTree();
-    } else {
-      // Hide the family tree when collapsing
-      document.getElementById('familyTree').innerHTML = '';
-    }
+  $(document).ready(function () {
+    $("#expandCollapseBtn").click(function () {
+      $("#familyTree").toggle();
+      var buttonText = $("#expandCollapseBtn").text() === "Expand Family Tree" ? "Collapse Family Tree" : "Expand Family Tree";
+      $("#expandCollapseBtn").text(buttonText);
+    });
   });
 </script>
 
