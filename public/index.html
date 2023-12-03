@@ -905,32 +905,55 @@
     ]
   };
 
-  // Function to generate family tree HTML
-  function generateFamilyTree(tree, depth = 0) {
-    const indent = '  '.repeat(depth);
-    let html = `${indent}<ul>\n${indent}  <li>${tree.name}`;
+// Function to generate family tree HTML
+function generateFamilyTree(tree, depth = 0, parentName = '') {
+  const indent = '  '.repeat(depth);
+  let buttonColorClass = '';
+  let nameColorClass = '';
 
-    if (tree.children && tree.children.length > 0) {
-      html += `\n${indent}    <button class="btn btn-secondary btn-sm ml-2" onclick="toggleChildren(this, '${tree.name}')">View ${tree.name}'s Children</button>`;
-      html += `\n${indent}    <div class="children" style="display: none;">`;
-
-      tree.children.forEach(child => {
-        html += generateFamilyTree(child, depth + 1);
-      });
-
-      html += `${indent}    </div>`;
-    }
-
-    html += `${indent}  </li>\n${indent}</ul>`;
-    return html;
+  // Determine button and name color classes based on depth and parentName
+  if (depth === 0) {
+    buttonColorClass = 'btn-secondary'; // Grey for parents
+    nameColorClass = 'text-secondary';
+  } else if (depth === 1) {
+    buttonColorClass = 'btn-success'; // Green for children
+    nameColorClass = 'text-success';
+  } else if (depth === 2) {
+    buttonColorClass = 'btn-primary'; // Blue for grandchildren
+    nameColorClass = 'text-primary';
+  } else if (depth === 3) {
+    buttonColorClass = 'btn-warning'; // Yellow for great-grandchildren
+    nameColorClass = 'text-warning';
+  } else if (depth >= 4) {
+    buttonColorClass = 'btn-secondary'; // Grey for beyond great-grandchildren
+    nameColorClass = 'text-secondary';
   }
 
-  // Function to toggle visibility of children
-  function toggleChildren(btn, parentName) {
-    const childrenDiv = btn.nextElementSibling;
-    childrenDiv.style.display = childrenDiv.style.display === 'none' ? 'block' : 'none';
-    btn.innerText = childrenDiv.style.display === 'none' ? `View ${parentName}'s Children` : `Hide ${parentName}'s Children`;
+  let html = `${indent}<ul>\n${indent}  <li><span class="${nameColorClass}">${tree.name}</span>`;
+
+  if (tree.children && tree.children.length > 0) {
+    html += `\n${indent}    <button class="btn ${buttonColorClass} btn-sm ml-2" onclick="toggleChildren(this, '${tree.name}')">View ${tree.name}'s Children</button>`;
+    html += `\n${indent}    <div class="children" style="display: none;">`;
+
+    tree.children.forEach(child => {
+      html += generateFamilyTree(child, depth + 1, tree.name);
+    });
+
+    html += `${indent}    </div>`;
   }
+
+  html += `${indent}  </li>\n${indent}</ul>`;
+  return html;
+}
+
+// Function to toggle visibility of children
+function toggleChildren(btn, parentName) {
+  const childrenDiv = btn.nextElementSibling;
+  childrenDiv.style.display = childrenDiv.style.display === 'none' ? 'block' : 'none';
+  btn.innerText = childrenDiv.style.display === 'none' ? `View ${parentName}'s Children` : `Hide ${parentName}'s Children`;
+}
+
+
 
   // Function to toggle the entire family tree
   function toggleFamilyTree() {
