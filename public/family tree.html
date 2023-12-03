@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Tree</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .tree-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .person {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="tree-container">
+    <div class="person" data-bs-toggle="modal" data-bs-target="#SsebulibaModal">Ssebuliba</div>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#ChristineModal">Christine</div>
+    <br>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#RobertModal">Robert</div>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#KawumaModal">Kawuma</div>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#NserekoModal">Nsereko</div>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#BusuulaModal">Busuula</div>
+    <br>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#RobertChildModal">Robert's Child</div>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#KawumaChildModal">Kawuma's Child</div>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#NserekoChildModal">Nsereko's Child</div>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#BusuulaChildModal">Busuula's Child</div>
+    <br>
+    <div class="person" data-bs-toggle="modal" data-bs-target="#GrandchildModal">Grandchild</div>
+  </div>
+</div>
+
+<div class="modal fade" id="SsebulibaModal" tabindex="-1" aria-labelledby="SsebulibaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="SsebulibaModalLabel">Ssebuliba</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Details about Ssebuliba go here.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add more modals for other individuals -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
