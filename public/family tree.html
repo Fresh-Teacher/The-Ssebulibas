@@ -4,61 +4,166 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Family Tree</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Add Bootstrap CDN links here -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #f8f9fa;
     }
-
-    .tree-container {
+    .container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .text-center {
       text-align: center;
-      margin-top: 50px;
     }
-
-    .person {
-      cursor: pointer;
-      text-decoration: underline;
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
 
-<div class="container mt-5">
-  <div class="tree-container">
-    <div class="person" data-bs-toggle="modal" data-bs-target="#SsebulibaModal">Ssebuliba</div>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#ChristineModal">Christine</div>
-    <br>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#RobertModal">Robert</div>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#KawumaModal">Kawuma</div>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#NserekoModal">Nsereko</div>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#BusuulaModal">Busuula</div>
-    <br>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#RobertChildModal">Robert's Child</div>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#KawumaChildModal">Kawuma's Child</div>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#NserekoChildModal">Nsereko's Child</div>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#BusuulaChildModal">Busuula's Child</div>
-    <br>
-    <div class="person" data-bs-toggle="modal" data-bs-target="#GrandchildModal">Grandchild</div>
+<div class="container mt-4 text-center">
+  <button class="btn btn-primary" id="toggleBtn">Expand Family Tree</button>
+  <div id="familyTree" class="mt-3">
+    <!-- Family tree content will be dynamically generated here -->
   </div>
 </div>
 
-<div class="modal fade" id="SsebulibaModal" tabindex="-1" aria-labelledby="SsebulibaModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="SsebulibaModalLabel">Ssebuliba</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Details about Ssebuliba go here.
-      </div>
-    </div>
-  </div>
-</div>
+<script>
+  // Family tree data for Enock and Christine
+  const familyTreeData = {
+    name: 'Enock and Christine',
+    children: [
+      {
+        name: 'Robert',
+        children: [
+          {
+            name: 'Grandchild 1',
+            children: [
+              { name: 'Great Grandchild 1' },
+              { name: 'Great Grandchild 2' },
+              // Add more great grandchildren as needed
+            ]
+          },
+          {
+            name: 'Grandchild 2',
+            children: [
+              { name: 'Great Grandchild 3' },
+              // Add more great grandchildren as needed
+            ]
+          },
+          // Add more grandchildren as needed
+        ]
+      },
+      {
+        name: 'Kawuma',
+        children: [
+          {
+            name: 'Grandchild 3',
+            children: [
+              // No great grandchildren for Grandchild 3 in this example
+            ]
+          },
+          // Add more grandchildren as needed
+        ]
+      },
+      {
+        name: 'Nsereko',
+        children: [
+          // No grandchildren for Nsereko in this example
+        ]
+      },
+      {
+        name: 'Sarah',
+        children: [
+          {
+            name: 'Grandchild 4',
+            children: [
+              { name: 'Great Grandchild 4' },
+              { name: 'Great Grandchild 5' },
+              // Add more great grandchildren as needed
+            ]
+          },
+          {
+            name: 'Grandchild 5',
+            children: [
+              { name: 'Great Grandchild 6' },
+              // Add more great grandchildren as needed
+            ]
+          },
+          // Add more grandchildren as needed
+        ]
+      },
+      {
+        name: 'Busuulwa',
+        children: [
+          {
+            name: 'Grandchild 6',
+            children: [
+              // No great grandchildren for Grandchild 6 in this example
+            ]
+          },
+          // Add more grandchildren as needed
+        ]
+      }
+    ]
+  };
 
-<!-- Add more modals for other individuals -->
+  // Function to generate family tree HTML
+  function generateFamilyTree(tree, depth = 0) {
+    const indent = '  '.repeat(depth);
+    let html = `${indent}<ul>\n${indent}  <li>${tree.name}`;
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    if (tree.children && tree.children.length > 0) {
+      html += `\n${indent}    <button class="btn btn-secondary btn-sm ml-2" onclick="toggleChildren(this, '${tree.name}')">Expand ${tree.name}'s Children</button>`;
+      html += `\n${indent}    <div class="children" style="display: none;">`;
+
+      tree.children.forEach(child => {
+        html += generateFamilyTree(child, depth + 1);
+      });
+
+      html += `${indent}    </div>`;
+    }
+
+    html += `${indent}  </li>\n${indent}</ul>`;
+    return html;
+  }
+
+  // Function to toggle visibility of children
+  function toggleChildren(btn, parentName) {
+    const childrenDiv = btn.nextElementSibling;
+    childrenDiv.style.display = childrenDiv.style.display === 'none' ? 'block' : 'none';
+    btn.innerText = childrenDiv.style.display === 'none' ? `Expand ${parentName}'s Children` : `Collapse ${parentName}'s Children`;
+  }
+
+  // Function to toggle the entire family tree
+  function toggleFamilyTree() {
+    const treeDiv = document.getElementById('familyTree');
+    treeDiv.innerHTML = generateFamilyTree(familyTreeData);
+  }
+
+  // Event listener for the main toggle button
+  document.getElementById('toggleBtn').addEventListener('click', function () {
+    const btn = this;
+    btn.innerText = btn.innerText === 'Expand Family Tree' ? 'Collapse Family Tree' : 'Expand Family Tree';
+    
+    if (btn.innerText === 'Collapse Family Tree') {
+      // Display Enock and Christine's information when the button is clicked
+      toggleFamilyTree();
+    } else {
+      // Hide the family tree when collapsing
+      document.getElementById('familyTree').innerHTML = '';
+    }
+  });
+</script>
+
 </body>
 </html>

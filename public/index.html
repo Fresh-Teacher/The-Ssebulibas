@@ -147,7 +147,16 @@
       width: 100%;
     }
 
-    
+    .text-center {
+      text-align: center;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -176,9 +185,9 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-View-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">Ssebuliba Family Group</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-Viewed="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -378,7 +387,7 @@
 
         </p>
         <p>
-            4. Mutumba, a great warrior during Kabaka Kyabaggu's time. He also played a role in expanding the Buganda Kingdom westwards. He chased the Banyoro chiefs that occupied Lubanja in Ssingo County together with their people.
+            4. Mutumba, a great warrior during Kabaka Kyabaggu's time. He also played a role in Viewing the Buganda Kingdom westwards. He chased the Banyoro chiefs that occupied Lubanja in Ssingo County together with their people.
 
         </p>
           <p>
@@ -454,6 +463,8 @@
     </div>
 </section>
 
+
+
 <!-- Add a modal container to the body -->
 <div class="modal" id="memberModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -479,8 +490,14 @@
 <!-- Family Members Section -->
 <section id="family-members" class="container mt-5">
     <h2>Family Members</h2>
-    <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. Here are some of the descendants:</p>
-     <strong><ol id="familyList">
+    <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has Viewed over the years with subsequent generations. Here are some of the descendants:</p>
+    <div class="container mt-4 text-center">
+      <button class="btn btn-primary" id="toggleBtn">View Family Tree</button>
+      <div id="familyTree" class="mt-3">
+        <!-- Family tree content will be dynamically generated here -->
+      </div>
+    </div>
+    <strong><ol id="familyList">
       <!-- Add data-member attributes for each family member -->
      <li data-member="Mutumba Jesse Paul"data-age="27" data-contact="0750687790" data-location="Namungoona" data-parents="Kyewalabye Robert" data-image="Mutumba Jesse Paul.jpg">Mutumba Jesse Paul</li>
       <li data-member="Nsereko Moses "data-age="62" data-contact="0771935360" data-location="Kkumbu" data-parents="Lt. Rev. Enock Ssebuliba" data-image="Nsereko Moses.jpg">Nsereko Moses</li>
@@ -717,6 +734,132 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <script>
+      // Family tree data for Enock and Christine
+  const familyTreeData = {
+    name: 'Enock and Christine',
+    children: [
+      {
+        name: 'Robert',
+        children: [
+          {
+            name: 'Grandchild 1',
+            children: [
+              { name: 'Great Grandchild 1' },
+              { name: 'Great Grandchild 2' },
+              // Add more great grandchildren as needed
+            ]
+          },
+          {
+            name: 'Grandchild 2',
+            children: [
+              { name: 'Great Grandchild 3' },
+              // Add more great grandchildren as needed
+            ]
+          },
+          // Add more grandchildren as needed
+        ]
+      },
+      {
+        name: 'Kawuma',
+        children: [
+          {
+            name: 'Grandchild 3',
+            children: [
+              // No great grandchildren for Grandchild 3 in this example
+            ]
+          },
+          // Add more grandchildren as needed
+        ]
+      },
+      {
+        name: 'Nsereko',
+        children: [
+          {name: 'No children'}
+        ]
+      },
+      {
+        name: 'Sarah',
+        children: [
+          {
+            name: 'Grandchild 4',
+            children: [
+              { name: 'Great Grandchild 4' },
+              { name: 'Great Grandchild 5' },
+              // Add more great grandchildren as needed
+            ]
+          },
+          {
+            name: 'Grandchild 5',
+            children: [
+              { name: 'Great Grandchild 6' },
+              // Add more great grandchildren as needed
+            ]
+          },
+          // Add more grandchildren as needed
+        ]
+      },
+      {
+        name: 'Busuulwa',
+        children: [
+          {
+            name: 'Grandchild 6',
+            children: [
+              // No great grandchildren for Grandchild 6 in this example
+            ]
+          },
+          // Add more grandchildren as needed
+        ]
+      }
+    ]
+  };
+
+  // Function to generate family tree HTML
+  function generateFamilyTree(tree, depth = 0) {
+    const indent = '  '.repeat(depth);
+    let html = `${indent}<ul>\n${indent}  <li>${tree.name}`;
+
+    if (tree.children && tree.children.length > 0) {
+      html += `\n${indent}    <button class="btn btn-secondary btn-sm ml-2" onclick="toggleChildren(this, '${tree.name}')">View ${tree.name}'s Children</button>`;
+      html += `\n${indent}    <div class="children" style="display: none;">`;
+
+      tree.children.forEach(child => {
+        html += generateFamilyTree(child, depth + 1);
+      });
+
+      html += `${indent}    </div>`;
+    }
+
+    html += `${indent}  </li>\n${indent}</ul>`;
+    return html;
+  }
+
+  // Function to toggle visibility of children
+  function toggleChildren(btn, parentName) {
+    const childrenDiv = btn.nextElementSibling;
+    childrenDiv.style.display = childrenDiv.style.display === 'none' ? 'block' : 'none';
+    btn.innerText = childrenDiv.style.display === 'none' ? `View ${parentName}'s Children` : `Hide ${parentName}'s Children`;
+  }
+
+  // Function to toggle the entire family tree
+  function toggleFamilyTree() {
+    const treeDiv = document.getElementById('familyTree');
+    treeDiv.innerHTML = generateFamilyTree(familyTreeData);
+  }
+
+  // Event listener for the main toggle button
+  document.getElementById('toggleBtn').addEventListener('click', function () {
+    const btn = this;
+    btn.innerText = btn.innerText === 'View Family Tree' ? 'Hide Family Tree' : 'View Family Tree';
+    
+    if (btn.innerText === 'Hide Family Tree') {
+      // Display Enock and Christine's information when the button is clicked
+      toggleFamilyTree();
+    } else {
+      // Hide the family tree when collapsing
+      document.getElementById('familyTree').innerHTML = '';
+    }
+  });
+
  let countdown = document.querySelector('.countdown');
   const output = countdown.innerHTML;
 
