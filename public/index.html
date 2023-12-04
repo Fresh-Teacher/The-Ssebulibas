@@ -494,7 +494,7 @@
 <!-- Family Members Section -->
 <section id="family-members" class="container mt-5">
     <h2>Family Members</h2>
-    <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. </p>
+    <p>The family of the <em>Late Reverend Enock Kyaluzi Ssebuliba</em> has grown into a large community. In addition to the late Reverend's children, the family has expanded over the years with subsequent generations. </p>
 
     <!-- Explanation of Family Tree Colors -->
 <div style="margin-bottom: 10px;">
@@ -506,12 +506,12 @@
     <span style="margin-right: 15px; color: #ffa600;">💛</span>: Great-Grandchildren<br>
   </p>
   <p>
-    <strong>NB:</strong> <em>The colours in the family tree are not merely for decoration! In fact, the deeper you go, the more colourful it becomes but each depth of this Family Tree conveys meaningful insights about every individual's generational level.</em>
+    <strong>NB:</strong> <em>The colours in the family tree are not merely for decoration! Although the deeper you go, the more colourful it becomes, each depth of this Family Tree conveys meaningful insights about every individual's generational level.</em>
   </p>
 </div>
 
     <div class="container mt-4 text-center">
-      <button class="btn btn-primary" id="toggleBtn">View Family Tree</button>
+      <button class="btn btn-info" id="toggleBtn">View Family Tree</button>
       <div id="familyTree" class="mt-3">
         <!-- Family tree content will be dynamically generated here -->
       </div>
@@ -929,8 +929,8 @@ function generateFamilyTree(tree, depth = 0, parentName = '') {
 
   // Determine button and name color classes based on depth and parentName
   if (depth === 0) {
-    buttonColorClass = 'btn-info'; // Blue for parents
-    nameColorClass = 'text-info';
+    buttonColorClass = 'btn-primary'; // Blue for parents
+    nameColorClass = 'text-primary';
   } else if (depth === 1) {
     buttonColorClass = 'btn-success'; // Green for children
     nameColorClass = 'text-success';
