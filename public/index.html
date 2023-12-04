@@ -494,7 +494,23 @@
 <!-- Family Members Section -->
 <section id="family-members" class="container mt-5">
     <h2>Family Members</h2>
-    <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has Viewed over the years with subsequent generations. Here are some of the descendants:</p>
+    <p>The family of the Late Reverend Enock Kyaluzi Ssebuliba has grown into a large community. In addition to the late Reverend's children, the family has Viewed over the years with subsequent generations. </p>
+
+    <!-- Explanation of Family Tree Colors -->
+<div style="margin-bottom: 10px;">
+  <p>
+    <strong>Interpretation of the Family Tree Colours:</strong><br>
+    <span style="margin-right: 15px; color: #17a2b8;">💙</span>: Parents<br>
+    <span style="margin-right: 15px; color: #28a745;">💚</span>: Children<br>
+    <span style="margin-right: 15px; color: #dc3545;">❤️</span>: Grandchildren<br>
+    <span style="margin-right: 15px; color: #ffa600;">🟠</span>: Great-Grandchildren<br>
+    <span style="color: #6c757d;">♥</span>: Beyond Great-Grandchildren<br>
+  </p>
+  <p>
+    <em>Note: The colours in the family tree are not merely for decoration; the deeper you go, the depth colour changes and it conveys meaningful insights about each individual's generational level.</em>
+  </p>
+</div>
+
     <div class="container mt-4 text-center">
       <button class="btn btn-primary" id="toggleBtn">View Family Tree</button>
       <div id="familyTree" class="mt-3">
@@ -863,7 +879,7 @@
         { name: 'Unknown' },            ]
       },
       {
-        name: 'Ssebuliba Hanningtone',
+        name: 'Ssebuliba Hannington',
         children: [
           {
             name: 'Ssebuliba Lule',
@@ -905,6 +921,7 @@
     ]
   };
 
+  
 // Function to generate family tree HTML
 function generateFamilyTree(tree, depth = 0, parentName = '') {
   const indent = '  '.repeat(depth);
@@ -913,16 +930,16 @@ function generateFamilyTree(tree, depth = 0, parentName = '') {
 
   // Determine button and name color classes based on depth and parentName
   if (depth === 0) {
-    buttonColorClass = 'btn-secondary'; // Grey for parents
-    nameColorClass = 'text-secondary';
+    buttonColorClass = 'btn-info'; // Blue for parents
+    nameColorClass = 'text-info';
   } else if (depth === 1) {
     buttonColorClass = 'btn-success'; // Green for children
     nameColorClass = 'text-success';
   } else if (depth === 2) {
-    buttonColorClass = 'btn-primary'; // Blue for grandchildren
-    nameColorClass = 'text-primary';
+    buttonColorClass = 'btn-danger'; // Red for grandchildren
+    nameColorClass = 'text-danger';
   } else if (depth === 3) {
-    buttonColorClass = 'btn-warning'; // Yellow for great-grandchildren
+    buttonColorClass = 'btn-warning'; // Orange for great-grandchildren
     nameColorClass = 'text-warning';
   } else if (depth >= 4) {
     buttonColorClass = 'btn-secondary'; // Grey for beyond great-grandchildren
